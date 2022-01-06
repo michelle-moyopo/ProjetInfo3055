@@ -1,4 +1,4 @@
-### FASTBLOOD App
+### CENTRE DE TRANFUSION SANGUINE App
 #### PRESENTATION OF THE DATABASE
 1. Role table
 2. User table
@@ -11,14 +11,6 @@
 9. Blood Bank Affiliations table
 10. Slider table
 
-#### PACKAGES INSTALL
-1. arielmejiadev/larapex-charts: for diagram, charts
-2. artesaos/seotools: for Seach Engine Optimization (SEO)
-3. barryvdh/laravel-dompdf: to generate PDF file
-4. brian2694/laravel-toastr: for Toast notification
-5. intervention/image: for image creation while uploading
-6. spatie/laravel-sitemap: generating the sitemap of the application
-7. jorenvanhocht/laravel-share: to share to social networks
 
 #### HOW TO RUN THE App
 1. Clone the repository from Heroku CLI
