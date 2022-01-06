@@ -13,7 +13,7 @@
                             <div class="hero-slides-content">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Le sang c'est la <span class="text-danger">Vie.</span></h2>
                                 <h5 data-animation="fadeInUp" data-delay="400ms">C'est l'essence vital qui nous maintient debout et assurer le fonctionnement de notre corps.</h5>
-                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir FastBlood</a>
+                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir </a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <div class="hero-slides-content">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Aidez tout en <br> restant en <span class="text-danger">sécurité.</span></h2>
                                 <h5 data-animation="fadeInUp" data-delay="400ms">Venez, Inscrivez-vous et aidez ceux qui sont dans le besoin.</h5>
-                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir FastBlood</a>
+                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir </a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <div class="hero-slides-content">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Une poche de sang de donnée <br>vaut une vie de <span class="text-danger">sauvée.</span></h2>
                                 <h5 data-animation="fadeInUp" data-delay="400ms">Ils sont des centaines à mourir chaque jours par manque de sang, venez...</h5>
-                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir FastBlood</a>
+                                <a href="#" class="btn medilife-btn mt-50 pt-0" data-animation="fadeInUp" data-delay="700ms">Découvrir </a>
                             </div>
                         </div>
                     </div>
