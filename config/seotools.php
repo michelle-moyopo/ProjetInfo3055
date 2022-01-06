@@ -9,12 +9,12 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "FastBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
+            'title'        => "TransBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'FastBlood, a blood bank web application', // set false to total remove
+            'description'  => 'TransBlood, a blood bank web application', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [
-                'FastBlood',
+                'TransBlood',
                 'banque sang cameroun',
                 'Face Blood',
                 'PEV',
@@ -44,8 +44,8 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'        => "FastBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
-            'description'  => 'FastBlood, a blood bank web application', // set false to total remove
+            'title'        => "TransBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
+            'description'  => 'TransBlood, a blood bank web application', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
@@ -66,8 +66,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'        => "FastBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
-            'description'  => 'FastBlood, a blood bank web application', // set false to total remove
+            'title'        => "TransBlood is a web application that aims to manage blood in Cameroon", // set false to total remove
+            'description'  => 'TransBlood, a blood bank web application', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
