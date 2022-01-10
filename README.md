@@ -21,7 +21,7 @@
 7. jorenvanhocht/laravel-share: to share to social networks
 
 #### HOW TO RUN THE App
-1. Clone the repository from Heroku CLI
+1. Clone the repository from GITHUB 
 2. Install all the necessary packages by: `$ composer install` or `$ composer update `
 3. Create the .env file by typing the command:`$ cp .env.example .env`
 4. Generate Application key with: `$ php artisan key:generate`
