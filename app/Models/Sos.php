@@ -12,7 +12,7 @@ class Sos extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function usersossignals()
@@ -22,6 +22,6 @@ class Sos extends Model
 
     public function bloodbank()
     {
-        return $this->hasMany(BloodBank::class);
+        return $this->belongsTo(BloodBank::class);
     }
 }

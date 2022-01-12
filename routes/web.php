@@ -121,3 +121,8 @@ Route::post('/gestionnaire/addPocheSang', [App\Http\Controllers\gestionnaire\Lis
 Route::get('/gestionnaire/listeAssociation', [App\Http\Controllers\gestionnaire\AssociationController::class, 'index'])->name('listeAssoiationAffi');
 Route::get('/gestionnaire/detailAssociation/{id}', [App\Http\Controllers\gestionnaire\AssociationController::class, 'show'])->name('');
 Route::get('/gestionnaire/validerAssociation', [App\Http\Controllers\gestionnaire\ValiderAssociationController::class, 'index'])->name('validerAssoiationAffi');
+
+//formulaire de demande ou de dont de sang
+route:: get('/demandeDontSang', function() {
+    return view('demandeDontSang');
+});

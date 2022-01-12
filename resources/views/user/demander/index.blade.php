@@ -42,7 +42,7 @@
                                     <tbody>
                                     @foreach($dons as $don)
                                         <tr>
-                                            <td>{{$don->bloodbank->name}}</td>
+                                            <td>{{$don->blood_banks_id->name}}</td>
                                             <td>{{$don->created_at}}</td>
                                             <td>
                                                 @if($don->enabled == 1)

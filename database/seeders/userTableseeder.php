@@ -17,7 +17,8 @@ class userTableseeder extends Seeder
         DB::table("users")->insert([
             // ["role_id"=>'1',"name"=>"admin","telephone"=>"657515280","email"=>"admin@gmail.com","enabled"=>"1","password"=> Hash::make("usertest")],
             // ["role_id"=>'2',"name"=>"directeur","telephone"=>"650124582","email"=>"directeur@gmail.com","enabled"=>"1","password"=> Hash::make("usertest")],
-            ["role_id"=>'4',"name"=>"getionnaire","telephone"=>"670124582","email"=>"getionnaire@gmail.com","enabled"=>"1","password"=> Hash::make("usertest")],
+            // ["role_id"=>'4',"name"=>"getionnaire","telephone"=>"670124582","email"=>"getionnaire@gmail.com","enabled"=>"1","password"=> Hash::make("usertest")],
+            ["role_id"=>'5',"name"=>"user","telephone"=>"670124582","email"=>"user@gmail.com","enabled"=>"1","password"=> Hash::make("usertest")],
 
         ]);
     }

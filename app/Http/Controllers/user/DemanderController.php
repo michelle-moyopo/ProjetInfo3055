@@ -6,6 +6,7 @@ use App\Models\Sos;
 use App\Models\BloodBank;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DemanderController extends Controller
 {
@@ -40,12 +41,12 @@ class DemanderController extends Controller
     public function store(Request $request)
     {
         try {
-            BloodBank::create([
-                'type' => $request->input('type'),
-                'user_id' => $request->input('user_id'),
-                'blood_banks_id' => $request->input('blood_banks_id'),
-                'blood_group' => $request->input('blood_group'),
-                'address' => $request->input('address'),
+            Sos::create([
+                'type' => request('type'),
+                'user_id' => request('user_id'),
+                'blood_banks_id' => request('blood_banks_id'),
+                'blood_group' => request('blood_group'),
+                'address' => request('address'),
                 'enabled' => 0,
             ]);
             Toastr::success('message', trans('messages.save_successfully'));
