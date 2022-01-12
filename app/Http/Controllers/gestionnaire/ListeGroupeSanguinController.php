@@ -21,7 +21,7 @@ class ListeGroupeSanguinController extends Controller
     {
        
           $userId = Auth::id();  
-        $users = BloodBankManager::where("enabled","1")->get(); 
+        $users = BloodBankManager::where("enabled","1")->get();
        
         foreach ($users as $user ) {
             $id=$user -> user_id;
