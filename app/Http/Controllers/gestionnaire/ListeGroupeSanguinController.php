@@ -8,8 +8,6 @@ use DB;
 use  App\Models\BloodBank;
 use  App\Models\BloodPocket;
 use  App\Models\BankPocket;
-use App\Models\BloodBankManager;
-use Illuminate\Support\Facades\Auth;
 class ListeGroupeSanguinController extends Controller
 {
     /**
@@ -19,17 +17,8 @@ class ListeGroupeSanguinController extends Controller
      */
     public function index()
     {
-       
-          $userId = Auth::id();  
-        $users = BloodBankManager::where("enabled","1")->get();
-       
-        foreach ($users as $user ) {
-            $id=$user -> user_id;
-            if($userId== $id){
-                 $id = $user->blood_bank_id;
-                return view('gestionnaire.banqueSang.ajoutpoche',compact('id'));
-            }
-        }  
+        $banks =BloodBank::where("enabled","1")->get();
+          return view('gestionnaire.banqueSang.ajoutpoche')->with('banks',$banks);
 
     }
 

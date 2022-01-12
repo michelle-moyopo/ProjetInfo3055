@@ -64,11 +64,9 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' =
     Route::get('activite-deroule', 'ActiviteController@activite_deroule')->name('activite_deroule');
 });
 
- Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {
-     Route::resource('dashboard', 'DashboardController');
-     Route::resource('affiche', 'AfficheGroupeSanguinController');
- });
-
+// Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {
+//     Route::resource('dashboard', 'DashboardController');
+// });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\user', 'as' => 'user.'], function() {
     Route::resource('dashboard', 'DashboardController');
@@ -135,3 +133,8 @@ Route::post('/gestionnaire/addPocheSang', [App\Http\Controllers\gestionnaire\Lis
 Route::get('/gestionnaire/listeAssociation', [App\Http\Controllers\gestionnaire\AssociationController::class, 'index'])->name('listeAssoiationAffi');
 Route::get('/gestionnaire/detailAssociation/{id}', [App\Http\Controllers\gestionnaire\AssociationController::class, 'show'])->name('');
 Route::get('/gestionnaire/validerAssociation', [App\Http\Controllers\gestionnaire\ValiderAssociationController::class, 'index'])->name('validerAssoiationAffi');
+
+//formulaire de demande ou de dont de sang
+route:: get('/demandeDontSang', function() {
+    return view('demandeDontSang');
+});

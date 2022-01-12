@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BloodBank;
 use App\Models\Sos;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DonationController extends Controller
 {
@@ -41,12 +42,12 @@ class DonationController extends Controller
     public function store(Request $request)
     {
         try {
-            BloodBank::create([
-                'type' => $request->input('type'),
-                'user_id' => $request->input('user_id'),
-                'blood_banks_id' => $request->input('blood_banks_id'),
-                'blood_group' => $request->input('blood_group'),
-                'address' => $request->input('address'),
+            sos::create([
+                'type' => request('type'),
+                'user_id' => request('user_id'),
+                'blood_banks_id' => request('blood_banks_id'),
+                'blood_group' => request('blood_group'),
+                'address' => request('address'),
                 'enabled' => 0,
             ]);
             Toastr::success('message', trans('messages.save_successfully'));

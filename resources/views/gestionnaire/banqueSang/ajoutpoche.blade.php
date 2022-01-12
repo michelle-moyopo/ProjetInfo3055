@@ -9,7 +9,6 @@
                   <div class="card-header">
                     <h4> Nouveau don</h4>
                   </div>
-                  <input type="hidden" name="id" value="{{$id}}">
                   <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">numero d'identification</label>
                       <div class="col-sm-12 col-md-7">
@@ -30,6 +29,17 @@
                           <option>AB-</option>
                         </select>
                       </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">groupe sanguin</label>
+                          <div class="col-sm-12 col-md-7">
+                            <select class="form-control selectric" name="blood_bank_id">
+                              @foreach ($banks as $bank)
+                             <option value="{{$bank->id}}">{{$bank->name}}</option>
+                            
+                             @endforeach
+                            </select>
+                          </div>
                     </div>
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Date de prelevement</label>
