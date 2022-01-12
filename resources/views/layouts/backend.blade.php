@@ -260,6 +260,10 @@
                         {{--  <li class="dropdown active">
                             <a href="{{route('gestionnaire')}}" class="nav-link"><i data-feather="monitor"></i><span> Banque de sang</span></a>
                         </li>  --}}
+                        <li class="dropdown {{ Request::is('gestionnaire/banqueSang/listeGroupeSanguin') ? 'active' : '' }}">
+                            <a href="{{route('gestionnaire.affiche.index')}}" class="nav-link"><i data-feather="command"></i><span>Listes des groupes sanguins</span></a>
+
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                     data-feather="briefcase"></i><span>Gestion des associations</span></a>
@@ -272,6 +276,7 @@
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Lancer une campagne</span></a>
 
                         </li>
+                        
                     </ul>
                 @elseif(Auth::user()->role_id == 5)
                     <ul class="sidebar-menu">

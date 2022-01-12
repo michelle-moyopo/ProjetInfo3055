@@ -52,9 +52,11 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' =
     Route::resource('dashboard', 'DashboardController');
 });
 
-// Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {
-//     Route::resource('dashboard', 'DashboardController');
-// });
+ Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {
+     Route::resource('dashboard', 'DashboardController');
+     Route::resource('affiche', 'AfficheGroupeSanguinController');
+ });
+
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\user', 'as' => 'user.'], function() {
     Route::resource('dashboard', 'DashboardController');
