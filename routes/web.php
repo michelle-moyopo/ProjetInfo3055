@@ -50,6 +50,12 @@ Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 
 
 Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\responsable', 'as' => 'responsable.'], function() {
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('association', 'AssociationController');
+    Route::resource('activite', 'ActiviteController');
+    Route::resource('account', 'AccountController');
+    Route::resource('inventaire', 'InventaireController');
+
+    Route::get('activite-deroule', 'ActiviteController@activite_deroule')->name('activite_deroule');
 });
 
  Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {

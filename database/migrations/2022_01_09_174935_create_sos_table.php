@@ -15,16 +15,17 @@ class CreateSosTable extends Migration
     {
         Schema::create('sos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('blood_banks_id');
+            $table->unsignedBigInteger('user_id'); 
+            $table->unsignedBigInteger('blood_bank_id');
             $table->enum('type', ['ALERTE', 'DEMANDE']);
-            $table->enum('blood_group', ['A+','A-', 'B+','B-','AB+','AB-','O+','O-']);
+            $table->enum('blood_group', ['A+','A-', 'B+', 'B-', 'O+','O-', 'AB+', 'AB-']);
             $table->string('address');
             $table->integer('enabled')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('blood_banks_id')->references('id')->on('blood_banks')->cascadeOnDelete();
+            $table->foreign('blood_bank_id')->references('id')->on('blood_banks')->cascadeOnDelete();
+       
         });
     }
 

@@ -14,14 +14,9 @@ class Sos extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function usersossignals()
-    {
-        return $this->hasMany(UserSosSignal::class);
-    }
-
+    
     public function bloodbank()
     {
-        return $this->hasMany(BloodBank::class);
+        return $this->belongsTo(BloodBank::class);
     }
 }

@@ -244,12 +244,35 @@
                             </li>
                     </ul>
                 @elseif(Auth::user()->role_id == 3)
-                    <ul class="sidebar-menu">
-                        <li class="menu-header">{{ __('messages.main') }}</li>
-                        <li class="dropdown {{ Request::is('responsable/dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('responsable.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
-                        </li>
-                    </ul>
+                <ul class="sidebar-menu">
+                    <li class="menu-header">{{ __('messages.main') }}</li>
+                    <li class="dropdown {{ Request::is('responsable/dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('responsable.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
+                    </li>
+                    {{-- <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="layers"></i><span>{{ __('messages.reponse_communautaire') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.association.index') }}">{{ __('messages.valid_association') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('responsable.activite.index') }}">{{ __('messages.organise_activity') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('responsable.activite_deroule') }}">{{ __('messages.activite_deroule') }}</a></li>
+                        </ul>
+                    </li> --}}
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="users"></i><span>{{ __('messages.comptes') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.account.index') }}">{{ __('messages.create_account') }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="package"></i><span>{{ __('messages.inventaires') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.inventaire.index') }}">{{ __('messages.gerer_stock') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 @elseif(Auth::user()->role_id == 4)
                     <ul class="sidebar-menu">
                         <li class="menu-header">{{ __('messages.main') }}</li>

@@ -10,7 +10,11 @@ class Groupe extends Model
 {
     use HasFactory;
 
+<<<<<<< Updated upstream
     protected $fillable = ['name', 'description','user_id', 'enabled'];
+=======
+    protected $fillable = ['name', 'description', 'enabled',];
+>>>>>>> Stashed changes
 
     public function groupe_users()
     {
