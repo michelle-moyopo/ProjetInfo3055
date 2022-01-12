@@ -42,14 +42,14 @@ class User extends Authenticatable
         return $this->hasMany(GroupeUser::class);
     }
 
-    public function bloodbanks()
+    public function bloodBankaffiliation()
     {
-        return $this->hasMany(BloodBank::class);
+        return $this->hasMany(BloodBankAffiliation::class);
     }
 
-    public function usersossignals()
+    public function sos()
     {
-        return $this->hasMany(UserSosSignal::class);
+        return $this->hasMany(Sos::class);
     }
 
 

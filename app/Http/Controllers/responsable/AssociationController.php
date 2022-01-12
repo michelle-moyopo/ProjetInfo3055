@@ -4,12 +4,8 @@ namespace App\Http\Controllers\responsable;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-use App\Models\BloodBank;
-use App\Models\BankPocket;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class AssociationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();  
-        $banks = BloodBank::where("enabled","1")->where("user_id",$userId)->first(); 
-        $bankgroup =BloodBank::where("enabled","1")->where("adress",$userId)->get();
-        $banks = BankPocket::where("blood_bank_id",$banks['id'])->get(); 
-           $total=count($banks);
-
-            foreach ($bankgroup as $key) {
-                
-            }
-            return view('responsable.dashboard',compact('total'));
-                  
-}
-       
+        return view('responsable.associations.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +24,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('responsable.associations.create');
     }
 
     /**

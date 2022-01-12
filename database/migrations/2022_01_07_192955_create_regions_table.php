@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBloodPocketsTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateBloodPocketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blood_pockets', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->string('serail_number');
-            $table->string('blood_group');
-            $table->date('date_prelevement');
-            $table->date('date_peremption');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateBloodPocketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blood_pockets');
+        Schema::dropIfExists('regions');
     }
 }

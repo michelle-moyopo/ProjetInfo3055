@@ -9,13 +9,16 @@ class BloodPocket extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['serial_number', 'blood_group', 'date_prelevement', 'date_peremption'];
+    protected $fillable = ['serial_number', 'duree_vie','blood_group_id','blood_bank_id'];
 
-    public function bankpockets()
+    public function bloodbank()
     {
-        return $this->hasMany(BankPocket::class);
+        return $this->belongsTo(BloodBank::class);
     }
-
+    public function bloodgroup()
+    {
+        return $this->belongsTo(BloodGroup::class);
+    }
     public function mouvements()
     {
         return $this->hasMany(Mouvement::class);

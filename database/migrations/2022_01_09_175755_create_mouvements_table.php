@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBloodBankManagersTable extends Migration
+class CreateMouvementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateBloodBankManagersTable extends Migration
      */
     public function up()
     {
-        Schema::create('blood_bank_managers', function (Blueprint $table) {
+        Schema::create('mouvements', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('blood_pocket_id');
             $table->unsignedBigInteger('blood_bank_id');
-            $table->integer('enabled')->default(0);
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->integer('type_mouvement'); // 0 for exit and 1 for entry
+            $table->foreign('blood_pocket_id')->references('id')->on('blood_pockets')->cascadeOnDelete();
             $table->foreign('blood_bank_id')->references('id')->on('blood_banks')->cascadeOnDelete();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +32,6 @@ class CreateBloodBankManagersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blood_bank_managers');
+        Schema::dropIfExists('mouvements');
     }
 }
