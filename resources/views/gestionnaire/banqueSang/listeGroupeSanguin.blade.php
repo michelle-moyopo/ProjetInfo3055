@@ -34,13 +34,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                 @foreach ($pockets as $pocket)
-                                  <td>{{$pocket->serail_number}}</td>
-                                    <td>{{$pocket->date_prelevement}} </td>
-                                    <td>{{$pocket->date_peremption}}</td>
-                                    <td>{{$pocket->blood_group}}</td>
-                                   
-                                    @endforeach
+                            
                                 </tr>
                                </tbody>
                             </table>

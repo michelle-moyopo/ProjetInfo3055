@@ -260,7 +260,7 @@
                         {{--  <li class="dropdown active">
                             <a href="{{route('gestionnaire')}}" class="nav-link"><i data-feather="monitor"></i><span> Banque de sang</span></a>
                         </li>  --}}
-                        <li class="dropdown {{ Request::is('gestionnaire/banqueSang/listeGroupeSanguin') ? 'active' : '' }}">
+                        <li class="dropdown {{ Request::is('gestionnaire/listeGroupeSanguin') ? 'active' : '' }}">
                             <a href="{{route('gestionnaire.affiche.index')}}" class="nav-link"><i data-feather="command"></i><span>Listes des groupes sanguins</span></a>
 
                         </li>

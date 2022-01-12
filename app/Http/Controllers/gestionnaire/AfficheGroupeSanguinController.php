@@ -14,7 +14,7 @@ class AfficheGroupeSanguinController extends Controller
      */
     public function index()
     {
-        return view('gestionnaire.listeGroupeSanguin');
+        return view('gestionnaire.banqueSang.listeGroupeSanguin');
     }
 
     /**
