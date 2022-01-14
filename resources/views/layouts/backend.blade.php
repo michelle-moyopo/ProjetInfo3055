@@ -180,7 +180,7 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="/"> <img alt="image" src="{{ asset('backend/assets/img/logo.png') }}" class="header-logo" /> <span
+                    <a href="/"> <img alt="image" src="{{ asset('img/logo.png') }}" class="header-logo" /> <span
                             class="logo-name">FastBlood</span>
                     </a>
                 </div>
@@ -225,24 +225,43 @@
                         </li>
                     </ul>
                 @elseif(Auth::user()->role_id == 2 || session()->get('role')=="DirGes")
-                    <ul class="sidebar-menu">
-                        <li class="menu-header">{{ __('messages.main') }}</li>
-                        <li class="dropdown {{ Request::is('directeur/dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('directeur.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
+                <ul class="sidebar-menu">
+                    <li class="menu-header">{{ __('messages.main') }}</li>
+                    <li class="dropdown {{ Request::is('directeur/dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('user.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
+                    </li>
+                    <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="briefcase"></i><span>Banque de sang</span></a>
+                            <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('directeur.BloodBank.index') }}">Voir les banques de sang</a></li>
+                              <li><a class="nav-link" href="{{ route('directeur.Inventaire.index') }}">Inventaires</a></li>
+                            </ul>
                         </li>
-                        <li class="dropdown active">
-                                <a href="{{route('gererBanques')}}" class="nav-link"><i data-feather="monitor"></i><span>Gerer les banques de sang</span></a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="{{route('gererUsers')}}" class="menu-toggle nav-link "><i data-feather="command"></i><span>Gerer les donneurs et receveurs</span></a>
-
-                            </li>
-                            <li class="dropdown">
-                                <a href="{{route('gererAsso')}}" class="menu-toggle nav-link"><i data-feather="mail"></i><span>Gestion des associations</span></a>
-
-                            </li>
-                    </ul>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Comptes</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('directeur.Responsable.index') }}">Comptes responsable</a></li>
+                                <li><a class="nav-link" href="{{ route('directeur.Notification.index') }}">Notifications</a></li>
+                            </ul>
+                        </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Reponses Communautaire</span></a>
+                        <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{route('directeur.reponseC.index')}}">Certifier Une Association</a></li>
+                          <li><a class="nav-link" href="{{route('directeur.annonce_collective.index')}}">Annonce Collective</a></li>
+                          <li><a class="nav-link" href="{{route('directeur.publication_generale.index')}}">Publication Generale</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Activites</span></a>
+                        <ul class="dropdown-menu">
+                          <li><a class="nav-link" href="">les Activites</a></li>
+                          <li><a class="nav-link" href="#">Mes Activites</a></li>
+                          <li><a class="nav-link" href="#">Creer une Activites</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 @elseif(Auth::user()->role_id == 3)
                 <ul class="sidebar-menu">
                     <li class="menu-header">{{ __('messages.main') }}</li>

@@ -45,7 +45,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 
 Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\directeur', 'as' => 'directeur.'], function() {
     Route::resource('dashboard', 'DashboardController');
-        // Route::resource('dashboard', 'HomeDirectorController');
+    Route::resource('reponseC', 'ReponseCommunautaireController');
+    Route::resource('annonce_collective', 'AnnonceCollectiveController');
+    Route::resource('publication_generale', 'PublicationGeneraleController');
+    Route::resource('BloodBank', 'BloodBankController');
+    Route::resource('Inventaire', 'InventaireController');
+    Route::resource('Responsable', 'ResponsableController');
+    Route::resource('Notification', 'NotificationController');
 });
 
 Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\responsable', 'as' => 'responsable.'], function() {

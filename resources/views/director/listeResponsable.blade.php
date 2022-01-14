@@ -3,8 +3,10 @@
 <section class="section">
         <div class="row">
             <div class="col-12">
+            <a href="{{route('directeur.Responsable.create')}}" class="btn btn-warning">Ajouter un responsable</a>
+
                 <div class="card">
-                    <div class="card-header">
+                <div class="card-header">
                         <h4>Assign Task Table</h4>
                         <div class="card-header-form">
                             <form>
@@ -31,12 +33,12 @@
                                     <th> Name</th>
                                     <th>Email</th>
                                     <th>phone</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Banque de sang</th>
+                                  <th>Action</th>
                                 </tr>
                                 @foreach ($users as $user)
-                            
-                      
+
+
                                 <tr>
                                   <td class="p-0 text-center">
                                     <div class="custom-checkbox custom-control">
@@ -52,15 +54,14 @@
                                   <td>
                                     {{$user->telephone}}
                                   </td>
-                                 
+
                                   <td>
-                                    <div class="badge badge-success">attante</div>
+                                    CHU
                                   </td>
-                                  <td>
-                                  <a type="button" href="{{url('dashbord/'.$user->id)}}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">details</a></td>
-                                </tr>
+                                  <td><a href="{{route('directeur.Responsable.destroy', $user->id)}}" class="btn btn-sm btn-danger">Supprimer</a></td>
+                                 </tr>
                                 @endforeach
-                                
+
                             </table>
                         </div>
                     </div>
