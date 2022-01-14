@@ -11,12 +11,12 @@ class BloodBank extends Model
 
     protected $fillable = ['fosas_name', 'contact','district_id','responsable_id','gestionnaire_id', 'enabled'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function district()
+    public function districts()
     {
         return $this->belongsTo(District::class);
     }

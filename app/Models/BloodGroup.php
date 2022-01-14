@@ -12,7 +12,7 @@ class BloodGroup extends Model
 
     protected $fillable = ['name'];
 
-    public function bloodpockets()
+    public function blood_pockets()
     {
         return $this->hasMany(BloodPocket::class);
     }
