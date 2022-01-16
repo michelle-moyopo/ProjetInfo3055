@@ -5,10 +5,10 @@ namespace App\Http\Controllers\user;
 use App\Models\Groupe;
 use App\Models\BloodBank;
 use App\Models\GroupeUser;
+use Brian2694\Toastr\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -63,6 +63,7 @@ class AssociationController extends Controller
                 'user_id'=>$dons->user_id,
                 'enabled'=>1
             ]);
+            Toastr::success('message', trans('messages.save_successfully'));
             return back();
         } catch (\Exception $e) {
             Toastr::error('message', trans('messages.unable_to_save'));
