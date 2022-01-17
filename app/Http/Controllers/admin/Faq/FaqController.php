@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\admin\Faq;
 
-use App\Models\Groupe;
-use App\Models\BloodBank;
-use App\Models\GroupeUser;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Faq;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use PHPUnit\TextUI\XmlConfiguration\Group;
-use App\Models\GroupeMiddle;
+use Brian2694\Toastr\Facades\Toastr;
 
-class AssociationController extends Controller
+class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +16,8 @@ class AssociationController extends Controller
      */
     public function index()
     {
-        // $dons = Sos::where('type', 'ALERTE')->get();
-        return view('user.association.index');
+        $faq = Faq::all();
+        return view('admin.faq.faq.index',compact('faq'));
     }
 
     /**
@@ -33,15 +27,8 @@ class AssociationController extends Controller
      */
     public function create()
     {
-        return view('user.association.create');
+        return view('admin.faq.faq.create');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.
@@ -51,26 +38,16 @@ class AssociationController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            Groupe::create([
-                'name' => $request->input('nom'),
-                'description' => $request->input('description'),
-                'user_id' => $request->input('user_id'),
-                'enabled' => 1,
-            ]);
-             $dons = Groupe::where('name', $request->input('nom'))->first();
-            GroupeUser::create([
-                'groupe_id'=> $dons->id,
-                'user_id'=>$dons->user_id,
-                'enabled'=>1
-            ]);
-            GroupeMiddle::create([
-                'groupe_user'=>$dons->id,
-                'total'=>1
+        try
+        {
+
+            // save blood pocket with blood bank
+            Faq::create([
+                'types' => $request->input('typefaq'),
             ]);
             Toastr::success('message', trans('messages.save_successfully'));
             return back();
-        } catch (\Exception $e) {
+        } catch(\Exception $e) {
             Toastr::error('message', trans('messages.unable_to_save'));
             return back();
         }
@@ -95,7 +72,12 @@ class AssociationController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $faq = Faq::findOrFail($id);
+            return view('admin.faq.faq.edit', compact('faq'));
+        } catch(\Exception $e) {
+            return back();
+        }
     }
 
     /**
@@ -107,7 +89,16 @@ class AssociationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $faq = Faq::findOrFail($id);
+            $faq->types = $request->input('typefaq');
+            $faq->save();
+            Toastr::success('messages', trans('messages.update_successfully'));
+            return back();
+        } catch(\Exception $e) {
+            Toastr::error('messages', trans('messages.unable_to_update'));
+            return back();
+        }
     }
 
     /**
@@ -118,6 +109,14 @@ class AssociationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $faq = Faq::findOrFail($id);
+            $faq->delete();
+            Toastr::success('messages', trans('messages.successfully_delete'));
+            return back();
+        } catch(\Exception $e) {
+            Toastr::error('messages', trans('messages.unable_to_delete'));
+            return back();
+        }
     }
 }

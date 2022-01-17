@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-	<title>Winku Social Network Toolkit</title>
+	<title>Reponse Communautaire</title>
     <link rel="icon" href="{{asset('img/logo.png')}}" type="image/png" sizes="16x16">
 
     <link rel="stylesheet" href="{{asset('social/css/main.min.css')}}">
     <link rel="stylesheet" href="{{asset('social/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('social/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('social/css/responsive.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('toastr.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/assets/bundles/izitoast/css/iziToast.min.css')}}">
+    @yield('styles')
 </head>
 <body>
 <div class="se-pre-con"></div>
@@ -162,39 +164,27 @@
                                             <ul class="naves">
                                                 <li>
                                                     <i class="ti-clipboard"></i>
-                                                    <a href="#" title="">News feed</a>
+                                                <a href="{{route('user.demander.create')}}" title="">Faire une Demande</a>
                                                 </li>
                                                 <li>
                                                     <i class="ti-mouse-alt"></i>
-                                                    <a href=#" title="">Inbox</a>
+                                                <a href="{{route('user.donation.create')}}" title="">Faire un Don</a>
                                                 </li>
                                                 <li>
                                                     <i class="ti-files"></i>
-                                                    <a href="#" title="">My pages</a>
+                                                    <a href="#" title="">Creer Une Association</a>
                                                 </li>
                                                 <li>
                                                     <i class="ti-user"></i>
-                                                    <a href="#" title="">friends</a>
+                                                    <a href="#" title="">Mes Association</a>
                                                 </li>
                                                 <li>
-                                                    <i class="ti-image"></i>
-                                                    <a href="#" title="">images</a>
-                                                </li>
-                                                <li>
-                                                    <i class="ti-video-camera"></i>
-                                                    <a href="#" title="">videos</a>
-                                                </li>
-                                                <li>
-                                                    <i class="ti-comments-smiley"></i>
-                                                    <a href="#" title="">Messages</a>
-                                                </li>
-                                                <li>
-                                                    <i class="ti-bell"></i>
-                                                    <a href="#" title="">Notifications</a>
-                                                </li>
-                                                <li>
-                                                    <i class="ti-power-off"></i>
-                                                    <a href="#" title="">Logout</a>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                            @csrf
+                                                    <a href="{{route('logout')}}" title="" onclick="event.preventDefault();this.closest('form').submit();"><i class="ti-power-off"></i>
+                                                        {{ __('messages.logout') }}
+                                                    </a>
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </div><!-- Shortcuts -->
@@ -612,6 +602,9 @@
         <script src="{{asset('social/js/script.js')}}"></script>
         <script src="{{asset('social/js/map-init.js')}}"></script>
         <script src="{{asset('social/js/main.min.js')}}"></script>
+        <script src="{{asset('toastr.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/page/toastr.js') }}"></script>
+        <script src="{{ asset('backend/assets/bundles/izitoast/js/iziToast.min.js')}}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 
     </body>

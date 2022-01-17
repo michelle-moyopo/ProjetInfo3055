@@ -41,6 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::resource('groupe', 'GroupeController');
     Route::resource('bloodbankaffiliation', 'BlooBankAffiliationController');
     Route::resource('slider', 'SliderController');
+    Route::resource('faq', 'Faq\FaqController');
+    Route::resource('categories', 'Faq\CategoriesController');
+    Route::resource('faquestion', 'Faq\FaqQuestionController');
 });
 
 Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\directeur', 'as' => 'directeur.'], function() {

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\informations;
 
-use App\Http\Controllers\Controller;
+use App\Models\FaqQuestion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class Faq extends Controller
 {
     public function faq_don_de_sang()
     {
-        return view('informations.faq.faq_don_de_sang');
+        $qat = FaqQuestion::all();
+        $cat = CategoriesQuestion::all();
+        return view('informations.faq.faq_don_de_sang', compact('qat','cat'));
     }
 
     public function faq_don_de_plasma()

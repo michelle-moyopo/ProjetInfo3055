@@ -1,6 +1,6 @@
 @extends('layouts.social')
 @section('title')
-{{ trans('messages.message') }}
+
 @endsection
 @section('content')
 <div class="col-lg-6">
@@ -10,16 +10,17 @@
 
             <form method="POST" action="{{ route('user.association.store') }}">
                     @csrf
-                <div class="form-group">
-                    <label>{{ __('messages.bloodbanks') }}</label>
-                    <div class="form-group">
+                <div>
+                    <label>Creer une association</label>
+                    <div>
                             <label>{{ __('messages.name') }}</label>
-                            <input type="text" name="nom" class="form-control" required>
+                            <input type="text" placeholder="nom" name="nom" class="form-control" required>
+                            {{-- <textarea type="text" placeholder="nom" name="nom" required></textarea> --}}
                         </div>
                 </div>
-                <div class="form-group">
+                <div>
                     <label>{{ __('messages.description') }}</label>
-                    <textarea type="text" name="description" class="form-control border-5" required></textarea>
+                    <textarea type="text" name="description" class="form-control border-10" required></textarea>
                 </div>
                 <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden class="form-control" required>
                 <div class="form-group">
