@@ -54,7 +54,8 @@ Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 
     Route::resource('BloodBank', 'BloodBankController');
     Route::resource('Inventaire', 'InventaireController');
     Route::resource('Responsable', 'ResponsableController');
-    Route::resource('Notification', 'NotificationController');
+    Route::resource('Notification', 'NotifController');
+    Route::resource('Compte', 'CompteController');
 });
 
 Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\responsable', 'as' => 'responsable.'], function() {
