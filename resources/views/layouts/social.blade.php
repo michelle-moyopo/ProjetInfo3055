@@ -606,7 +606,17 @@
         <script src="{{ asset('backend/assets/js/page/toastr.js') }}"></script>
         <script src="{{ asset('backend/assets/bundles/izitoast/js/iziToast.min.js')}}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
-
+        {!! Toastr::message() !!}
+        <script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}','Error',{
+                    closeButtor: true,
+                    progressBar: true
+                });
+                @endforeach
+            @endif
+        </script>
     </body>
 
     </html>

@@ -7,9 +7,9 @@ use App\Models\BloodBank;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\District;
-use App\Models\Fosa;
+
 use App\Models\BloodPocket;
-use App\Models\BloodBankManager;
+
 use Session;
 
 class BloodBankController extends Controller
@@ -24,39 +24,36 @@ class BloodBankController extends Controller
         //
         $mailsRespo=array();
         $mailsGest=array();
-$fosas=array();
+
 $districts=array();
 $regions=array();
       //  $banks=Region::where('enabled',1)->get();
          $banks=BloodBank::where('enabled',1)->get();
          $i=0;
          foreach ($banks as $b) {
-            $fosa=Fosa::where('id',$b['fosa_id'])->first();
-            $fosas[$i]=$fosa;
-            $district=District::where('id',$fosa['district_id'])->first();
+            
+            $district=District::where('id',$b['district_id'])->first();
             $districts[$i]=$district;
             $region=Region::where('id',$district['region_id'])->first();
             $regions[$i]=$region;
             if ($b['user_id']!=null) {
-                 $user=User::where('id',$b['user_id'])->first();
+                 $user=User::where('id',$b['responsable_id'])->first();
                  $mailsRespo[$i]=$user['email'];
             }
             else{
                  $mailsRespo[$i]='non defini' ;
             }
            
-            $gest=BloodBankManager::where('blood_bank_id',$b['id'])->first();
-            if ($gest!=null) {
-                  $gestname=User::where('id',$gest['user_id'])->first();
-             $mailsGest[$i]=$gestname['email'];
-            }
-            else{
-                 $mailsGest[$i]='non defini' ;
-            }
-
+            if ($b['user_id']!=null) {
+                $user=User::where('id',$b['gestionnaire_id'])->first();
+                $mailsGest[$i]=$user['email'];
+           }
+           else{
+                $mailsGest[$i]='non defini' ;
+           }
             
              $i++;}
-        return view('director/listBank', ['banks'=>$banks, 'respo'=>$mailsRespo, 'gest'=>$mailsGest,'fosas'=>$fosas,'districts'=>$districts,'regions'=>$regions]);
+        return view('director/listBank', ['banks'=>$banks, 'respo'=>$mailsRespo, 'gest'=>$mailsGest,'districts'=>$districts,'regions'=>$regions]);
     }
 
     /**
@@ -67,8 +64,8 @@ $regions=array();
     public function create()
     {
         //
-        $fosas=Fosa::where('enabled',1)->get();
-        return view('director/addBank', ['fosas'=>$fosas]);
+        $district=District::all();
+        return view('director/addBank',['district'=>$district]);
     }
 
     /**
@@ -80,7 +77,20 @@ $regions=array();
     public function store(Request $request)
     {
         //
-        $req=BloodBank::create(['fosa_id'=>$request->fosa]);
+        $bs=BloodBank::where('fosas_name',$request->nameFS)->where('district_id',$request->district_id)->get();
+
+        if (count($bs)==0) {
+            # code...
+            $req=BloodBank::create(['fosas_name'=>$request->nameFS,'contact'=>$request->tel,'district_id'=>$request->district_id]);
+        }
+        else{
+            $req=BloodBank::where('fosas_name',$request->nameFS)->where('district_id',$request->district_id)->first();
+            BloodBank::where('fosas_name',$req->nameFS)->where('district_id',$req->district_id)->update(['enabled'=>1]);
+            
+        }
+
+
+        // $req=BloodBank::create(['fosas_name'=>$request->nameFS,'contact'=>$request->tel,'district_id'=>$request->district_id]);
         return redirect()->route('directeur.BloodBank.index') ;
     }
 
@@ -110,8 +120,8 @@ $regions=array();
         $Om= BloodPocket::where('blood_bank_id',$id)->where('blood_group_id',8)->get();
         $nbOm=count($Om);
         $b=BloodBank::where('id',$id)->first();
-        if ($b['user_id']!=null) {
-            $user=User::where('id',$b['user_id'])->first();
+        if ($b['responsable_id']!=null) {
+            $user=User::where('id',$b['responsable_id'])->first();
             $nameRespo=$user['name'];
            
        }
@@ -119,15 +129,14 @@ $regions=array();
             $nameRespo='non defini' ;
        }
       
-       $gest=BloodBankManager::where('blood_bank_id',$b['id'])->first();
-       if ($gest!=null) {
-             $gestname=User::where('id',$gest['user_id'])->first();
-             $nameGest= $gestname['name'];
+       if ($b['responsable_id']!=null) {
+        $user=User::where('id',$b['gestionnaire_id'])->first();
+        $nameGest=$user['name'];
        
-       }
-       else{
-            $nameGest='non defini' ;
-       }
+   }
+   else{
+        $nameRespo='non defini' ;
+   }
 
         return view('director/detailBank',['respo'=>$nameRespo, 'gest'=>$nameGest,'Ap'=>$nbAp,'Am'=>$nbAm,'Bp'=>$nbBp,'Bm'=>$nbBm,'ABp'=>$nbABp,'ABm'=>$nbABm,'Op'=>$nbOp,'Om'=>$nbOm]); 
     }
@@ -141,10 +150,10 @@ $regions=array();
     public function edit($id)
     {
         //
+        $districts=District::all();
         $b=BloodBank::where('id',$id)->first();
-        $fosa=Fosa::where('id',$b['fosa_id'])->first();
-        $fosas=Fosa::where('enabled',1)->get();
-       return view('director/editBank',['fosa'=>$fosa,'fosas'=>$fosas, 'b'=>$b] ); 
+        $district=District::where('id',$b['district_id'])->first();
+       return view('director/editBank',['b'=>$b,'district'=>$district,'districts'=>$districts] ); 
     }
 
     /**
@@ -157,7 +166,10 @@ $regions=array();
     public function update(Request $request, $id)
     {
         //
-        $b=BloodBank::where('id',$id)->update(['fosa_id'=>$request->fosa]);
+       
+        
+
+        $b=BloodBank::where('id',$id)->update(['fosas_name'=>$request->nameFS,'contact'=>$request->tel,'district_id'=>$request->district_id]);
         return redirect()->route('directeur.BloodBank.index') ;
     }
 
@@ -170,7 +182,7 @@ $regions=array();
     public function destroy($id)
     {
         //
-        dd($id);
+       
         $req=BloodBank::where('id',$id)->update([ 'enabled'=>0 ]);
         return redirect()->route('directeur.BloodBank.index') ;
     }

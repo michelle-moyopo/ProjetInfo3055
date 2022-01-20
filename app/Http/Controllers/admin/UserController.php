@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Mail\UserMail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -42,20 +44,45 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            User::create([
-                'role_id' => $request->input('role_id'),
-                'name' => $request->input('name'),
-                'telephone' => $request->input('telephone'),
-                'email' => $request->input('email'),
-                'enabled' => 1,
-                'password' => Hash::make($request->input('password'))
-            ]);
-            Toastr::success('messages', trans('messages.save_successfully'));
-            return back();
+
+            if($this->isOnline()){
+                User::create([
+                    'role_id' => $request->input('role_id'),
+                    'name' => $request->input('name'),
+                    'telephone' => $request->input('telephone'),
+                    'email' => $request->input('email'),
+                    'enabled' => 1,
+                    'password' => Hash::make($request->input('password'))
+                ]);
+                try{
+                $mail_data = [
+                    'recipient'=>$request->input('email'),
+                    'fromName'=>$request->input('name'),
+                    'body'=>$request->input('password')
+                ];
+
+                Mail ::to($request->input('email'))->send(new UserMail($mail_data));
+                Toastr::success('messages', trans('Success Send'));
+                return back();
+            }
+            catch(\Exception $e) {
+                Toastr::error('message', trans('Mail Dont Send'));
+                return back();
+            }
+            }else{
+                Toastr::error('message', trans('Not Connected to Internet'));
+                return back();
+            }
         } catch(\Exception $e) {
             Toastr::error('message', trans('messages.unable_to_save'));
             return back();
         }
+    }
+
+    public function isOnline($site = "https://youtube.com/") {
+        if(@fopen($site, 'r')) {
+            return true;
+        }else{return false;}
     }
 
     /**

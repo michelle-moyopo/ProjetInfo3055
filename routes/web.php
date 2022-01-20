@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\informations\Faq;
 use App\Http\Controllers\user\AssociationController;
 use App\Http\Controllers\informations\Connaitre_plus;
-use App\Http\Controllers\informations\Qui_peut_donner;
 use App\Http\Controllers\AssociationUjoinedController;
+use App\Http\Controllers\informations\Qui_peut_donner;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,8 @@ Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 
     Route::resource('BloodBank', 'BloodBankController');
     Route::resource('Inventaire', 'InventaireController');
     Route::resource('Responsable', 'ResponsableController');
-    Route::resource('Notification', 'NotificationController');
+    Route::resource('Notification', 'NotifController');
+    Route::resource('Compte', 'CompteController');
 });
 
 Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\responsable', 'as' => 'responsable.'], function() {
@@ -78,6 +80,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth'], 'namespace' => 'App\
     Route::resource('demander', 'DemanderController');
     Route::resource('association', 'AssociationController');
     Route::resource('unjoind', 'AssociationUjoinedController');
+    Route::resource('posts','PostComtroller');
 
 });
 
@@ -147,3 +150,18 @@ route:: get('/demandeDontSang', function() {
 
 Route::get('/email', [App\Http\Controllers\TestController::class, 'sendmail']);
 
+// Post
+Route::get('/posts', [PostController::class, 'index']); // all posts
+Route::post('/posts', [PostController::class, 'store'])->name("create_posts"); // create post
+Route::get('/posts/{id}', [PostController::class, 'show']); // get single post
+Route::put('/posts/{id}', [PostController::class, 'update']); // update post
+Route::delete('/posts/{id}', [PostController::class, 'destroy']); // delete post
+
+// Comment
+Route::get('/posts/{id}/comments', [CommentController::class, 'index']); // all comments of a post
+Route::post('/posts/{id}/comments', [CommentController::class, 'store']); // create comment on a post
+Route::put('/comments/{id}', [CommentController::class, 'update']); // update a comment
+Route::delete('/comments/{id}', [CommentController::class, 'destroy']); // delete a comment
+
+// Like
+Route::post('/posts/{id}/likes', [LikeController::class, 'likeOrUnlike']); // like or dislike back a post
