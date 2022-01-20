@@ -40,9 +40,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $i = 0;
+                                         @endphp
+                                        @endphp
                                     @foreach($dons as $don)
                                         <tr>
-                                            <td>{{$don->bloodbank->name}}</td>
+                                            <td>{{$banks[$i]}}</td>
                                             <td>{{$don->created_at}}</td>
                                             <td>
                                                 @if($don->enabled == 1)
@@ -67,6 +71,11 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @php
+                                         $i++;
+                                        @endphp
+
+
                                     @endforeach
                                     </tbody>
                                 </table>

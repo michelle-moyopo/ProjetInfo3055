@@ -17,8 +17,15 @@ class DemanderController extends Controller
      */
     public function index()
     {
+        $banks = array();
+        $i = 0;
         $dons = Sos::where('type', 'DEMANDE')->get();
-        return view('user.demander.index', compact('dons'));
+        foreach ($dons as $d ) {
+            $bs = BloodBank::where('id', $d['blood_bank_id'] )->first();
+            $banks[$i]=  $bs['fosas_name'];
+            $i++;
+        }
+        return view('user.demander.index', compact('dons','banks'));
     }
 
     /**
@@ -29,6 +36,7 @@ class DemanderController extends Controller
     public function create()
     {
         $banks = BloodBank::where('enabled', 1)->get();
+        //dd($banks);
         return view('user.demander.create', compact('banks'));
     }
 
@@ -44,7 +52,7 @@ class DemanderController extends Controller
             Sos::create([
                 'type' => request('type'),
                 'user_id' => request('user_id'),
-                'blood_banks_id' => request('blood_banks_id'),
+                'blood_bank_id' => request('blood_bank_id'),
                 'blood_group' => request('blood_group'),
                 'address' => request('address'),
                 'enabled' => 0,

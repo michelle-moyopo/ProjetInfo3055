@@ -18,8 +18,15 @@ class DonationController extends Controller
      */
     public function index()
     {
+        $banks = array();
+        $i = 0;
         $dons = Sos::where('type', 'ALERTE')->get();
-        return view('user.donation.index', compact('dons'));
+        foreach ($dons as $d ) {
+            $bs = BloodBank::where('id', $d['blood_bank_id'] )->first();
+            $banks[$i]=  $bs['fosas_name'];
+            $i++;
+        }
+        return view('user.donation.index', compact('dons', 'banks' ));
     }
 
     /**
@@ -41,11 +48,11 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+         try {
             sos::create([
                 'type' => request('type'),
                 'user_id' => request('user_id'),
-                'blood_banks_id' => request('blood_banks_id'),
+                'blood_bank_id' => request('blood_bank_id'),
                 'blood_group' => request('blood_group'),
                 'address' => request('address'),
                 'enabled' => 0,

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sos extends Model
 {
     use HasFactory;
-    protected $fillable = ['type', 'user_id','blood_banks_id', 'blood_group', 'address', 'enabled'];
+    protected $fillable = ['type', 'user_id','blood_bank_id', 'blood_group', 'address', 'enabled'];
 
     public function user()
     {

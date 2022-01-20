@@ -33,9 +33,9 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>{{ __('messages.bloodbanks') }}</label>
-                                    <select class="form-control select2" name="blood_banks_id" required>
+                                    <select class="form-control select2" name="blood_bank_id" required>
                                         @foreach($banks as $bank)
-                                            <option value="{{ $bank->id }}">{{ $bank->name }} ({{$bank->address}})</option>
+                                            <option value="{{ $bank->id }}">{{ $bank->fosas_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
