@@ -107,16 +107,16 @@
                               <a href="{{ route('responsable.messagerie.create') }}">
                                 <span class="badge badge-primary">{{$item->type}}</span>
                               @if ($item->type =='DEMANDE')
-                              Lorem ipsum perspiciatis unde omnis iste natus
+                              Je souhaiterais avoir du sang dans votre banque de sang
                               @else
-                              Lorem ipsum perspiciatis unde omnis iste natus
+                              Je souhaiterais faire un don de sang dans votre banque de sang
                               @endif
                                </a>
                             </td>
                             <td class="hidden-xs">
                               <i class="material-icons">{{$item->blood_group}}</i>
                             </td>
-                            <td class="text-right"> <a href="{{ route('responsable.messagerie.create') }}" class="btn btn-success">{{ __('messages.response') }}</a>
+                            <td class="text-right"> <a href="{{ route('responsable.messagerie.show',$item['id'])}}" class="btn btn-success">{{ __('messages.response') }}</a>
                             </td>
                           </tr>  
                         @endif

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BloodBank;
 use App\Models\User;
+use App\Mail\TestMail;
+use Brian2694\Toastr\Facades\Toastr;
 class MessagerieController extends Controller
 {
     /**
@@ -33,7 +35,7 @@ class MessagerieController extends Controller
      */
     public function create()
     {
-        return view('responsable.messagerie.create');
+       
     
     }
 
@@ -45,13 +47,25 @@ class MessagerieController extends Controller
      */
     public function store(Request $request)
     {
-       
-     $details = [
-        'title' => 'mail from surside Media',
-        'body' => 'this is for testing mail using gmail.'
-      ];
-      Mail ::to('michellefotso2@gmail.com')->send(new TestMail($details));
-        return 'email send ';
+        try
+        {
+        $details = [
+            'title' =>$request->input('subject'),
+            'blood_bank' => $request->input('blood_bank'),
+          ];
+         Sos::where('id',$request->input('id'))->update([
+            'enabled' => '1',
+           
+        ]);
+          Mail ::to($request->input('email'))->send(new TestMail($details));
+            
+            Toastr::success('messages', trans('messages.message_successfully'));
+            return back();
+        } catch(\Exception $e) {
+            Toastr::error('messages', trans('messages.unable_to_message'));
+            return back();
+        }
+     
     }
 
     /**
@@ -62,8 +76,10 @@ class MessagerieController extends Controller
      */
     public function show($id)
     {
-       
-        return view('responsable.messagerie.edit');
+        $sos =Sos::where('id',$id)->first();
+       $user = User::where('id',$sos['user_id'])->first();
+       $bank = BloodBank::where("enabled","1")->get();
+        return view('responsable.messagerie.create',compact('user','bank','sos'));
     }
 
     /**
@@ -86,7 +102,7 @@ class MessagerieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

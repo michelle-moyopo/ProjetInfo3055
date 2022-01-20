@@ -33,11 +33,21 @@
                       <div class="col-lg-12">
                         <form class="composeForm" method="POST" action="{{ route('responsable.messagerie.store') }}">
                             @csrf
+                            <input type="hidden"  name="id" class="form-control" value="{{$sos->id}}" >
+                           
                           <div class="form-group">
                             <div class="form-line">
-                              <input type="text" id="email_address" name="email" class="form-control" placeholder="A">
+                            <input type="text" id="email_address" name="email" class="form-control" value="{{$user->email}}" placeholder="A">
                             </div>
                           </div>
+                          <div class="form-group">
+                            <select name="blood_bank" id="blood_group_id" class="form-control">
+                                @foreach ($bank as $item)
+                            <option  value="{{$item->fosas_name}}">{{$item->fosas_name}}</option>  
+                            
+                                @endforeach    
+                                </select>
+                        </div>
                           <div class="form-group">
                             <div class="form-line">
                               <input type="text" id="subject" name="subject" class="form-control" placeholder="object">
@@ -54,7 +64,7 @@
                       <div class="col-lg-12">
                         <div class="m-l-25 m-b-20">
                           <button type="submit"  class="btn btn-info btn-border-radius waves-effect">Envoyer</button>
-                          <button type="button" class="btn btn-danger btn-border-radius waves-effect">Annuler</button>
+                          {{-- <button type="button" class="btn btn-danger btn-border-radius waves-effect">Annuler</button> --}}
                         </div>
                       </div>
                     </form>

@@ -98,5 +98,7 @@ return [
     'gerer_messagerie' => 'Mes messages',
     'add_mail' => 'Envoyer un email',
     'response' => 'reponse',
-    'autrebanque'=>' Autre banque de sang'
+    'autrebanque'=>' Autre banque de sang',
+    'message_successfully'=> 'envoyer avec succès',
+    'unable_to_message'=> 'Impossible d\'envoyer',
 ];
