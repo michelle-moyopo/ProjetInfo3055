@@ -2,26 +2,24 @@
 
 namespace App\Mail;
 
-
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserMail extends Mailable
+class AllRespoMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $userss;
-
+    public $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($userss)
+    public function __construct($user)
     {
-        $this-> userss = $userss;
+        //
+        $this->user = $user;
     }
 
     /**
@@ -31,7 +29,6 @@ class UserMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Validation Account')
-                    ->view('admin.email.usersend');
+        return $this->subject('Nouveau communique')->view('director.email.send');
     }
 }

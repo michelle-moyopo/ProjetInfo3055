@@ -5,7 +5,8 @@ namespace App\Http\Controllers\directeur;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\UserMail;
+use App\Mail\AllRespoMail;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 class NotifController extends Controller
 {
@@ -42,19 +43,24 @@ class NotifController extends Controller
     public function store(Request $request)
     {
         //
+
         try {
 
             if($this->isOnline()){
-                
+                   $user=User::where('role_id',3)->get();
+       
 
                 $mail_data = [
-                    'recipient'=>'teumoubande@gmail.com',
-                    'fromName'=>'centre transfusion',
-                    'subject'=>'Communique directeur',
+                    
+                    'title'=>'Communique directeur',
                     'body'=>$request->contenu
                 ];
-
-                Mail::to("teumoubande@gmail.com")->send(new UserMail($mail_data));
+foreach ($user as $key ) {
+    $mail=$key['email'];
+    Mail::to($mail)->send(new AllRespoMail($mail_data));
+ 
+}
+                Mail::to("teumoubande@gmail.com")->send(new AllRespoMail($mail_data));
                 Toastr::success('messages', trans('messages.save_successfully'));
                 return back();
             }else{
@@ -62,7 +68,7 @@ class NotifController extends Controller
                 return back();
             }
         } catch(\Exception $e) {
-            Toastr::error('message', trans('messages.unable_to_save'));
+            Toastr::error('message', $e);
             return back();
         }
     }
