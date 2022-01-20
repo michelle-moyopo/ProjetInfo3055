@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Models\GroupeMiddle;
 
 class AssociationUjoinedController extends Controller
 {
@@ -18,9 +19,11 @@ class AssociationUjoinedController extends Controller
      */
     public function index()
     {
-        $groupe = Groupe::where('enabled', 1)->get();
-        $number_of_menbers = DB::table('groupes')->where('enabled', 1)->count();
-        return view('user.association.unjoind_association', compact('groupe','number_of_menbers'));
+        $groupe = GroupeMiddle::orderBy("created_at")->get();
+        $groupe_use = GroupeUser::all();
+        $user_use = DB::table('groupe_users')->where('user_id')->get();
+
+        return view('user.association.unjoind_association', compact('groupe','groupe_use'));
     }
 
     /**

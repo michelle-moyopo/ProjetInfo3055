@@ -41,6 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::resource('groupe', 'GroupeController');
     Route::resource('bloodbankaffiliation', 'BlooBankAffiliationController');
     Route::resource('slider', 'SliderController');
+    Route::resource('faq', 'Faq\FaqController');
+    Route::resource('categories', 'Faq\CategoriesController');
+    Route::resource('faquestion', 'Faq\FaqQuestionController');
 });
 
 Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\directeur', 'as' => 'directeur.'], function() {
@@ -140,15 +143,7 @@ route:: get('/demandeDontSang', function() {
     return view('demandeDontSang');
 });
 
-//Route::get('/email', [App\Http\Controllers\TestController::class, 'create']);
+
 
 Route::get('/email', [App\Http\Controllers\TestController::class, 'sendmail']);
 
-
-Route::get('/test-contact', function () {
-    return new App\Mail\TestMail([
-      'nom' => 'Durand',
-      'email' => 'durand@chezlui.com',
-      'message' => 'Je voulais vous dire que votre site est magnifique !'
-      ]);
-});
