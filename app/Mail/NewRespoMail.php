@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AllRespoMail extends Mailable
+class NewRespoMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
@@ -29,6 +29,7 @@ class AllRespoMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Nouveau communique')->view('director.email.send');
+        return $this->subject('Validation Account')->view('director.email.newAccount');
     }
 }
+

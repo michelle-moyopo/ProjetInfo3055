@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BloodBank;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AllRespoMail;
+
+use Brian2694\Toastr\Facades\Toastr;
 
 class CompteController extends Controller
 {
@@ -74,9 +78,38 @@ class CompteController extends Controller
             $b=BloodBank::where('id',$request->fosa)->update(['responsable_id'=>$req->id]);
         }
         
-            
-        return redirect()->route('directeur.Compte.index') ;
+        try {
+
+            if($this->isOnline()){
+                   
+       
+
+                $mail_data = [
+                    
+                    'title'=>'Nouveau compte',
+                    'body'=>$request->mail. "" .$request->password
+                ];
+
+    Mail::to($request->mail)->send(new AllRespoMail($mail_data));
+ 
+
+         Toastr::success('messages', trans('messages.save_successfully'));
+                return redirect()->route('directeur.Compte.index') ;
+            }else{
+                Toastr::error('message', trans('Not Connected to Internet'));
+                return back();
+            }
+        } catch(\Exception $e) {
+            Toastr::error('message', $e);
+            return back();
+        }
+  
     
+    }
+    public function isOnline($site = "https://youtube.com/") {
+        if(@fopen($site, 'r')) {
+            return true;
+        }else{return false;}
     }
 
     /**
