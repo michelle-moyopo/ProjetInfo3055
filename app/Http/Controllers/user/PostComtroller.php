@@ -3,18 +3,11 @@
 namespace App\Http\Controllers\user;
 
 use App\Models\Post;
-use App\Models\Groupe;
-use App\Models\BloodBank;
-use App\Models\GroupeUser;
-use App\Models\GroupeMiddle;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\Auth;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 
-class AssociationController extends Controller
+class PostComtroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,14 +16,13 @@ class AssociationController extends Controller
      */
     public function index()
     {
-        // $dons = Sos::where('type', 'ALERTE')->get();
-        $posts = Post::orderBy('created_at', 'desc')->with('user:id,name')->withCount('comments', 'likes')
+        $posts = Post::orderBy('created_at', 'desc')->with('users:id,name')->withCount('comments', 'likes')
             ->with('likes', function($like){
                 return $like->where('user_id', auth()->user()->id)
                     ->select('id', 'user_id', 'post_id')->get();
             })
             ->get();
-        return view('user.association.index',compact('posts'));
+            return view('home',compact('posts'));
     }
 
     /**
@@ -40,15 +32,8 @@ class AssociationController extends Controller
      */
     public function create()
     {
-        return view('user.association.create');
+        //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.
@@ -58,26 +43,22 @@ class AssociationController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            Groupe::create([
-                'name' => $request->input('nom'),
-                'description' => $request->input('description'),
-                'user_id' => $request->input('user_id'),
-                'enabled' => 1,
-            ]);
-             $dons = Groupe::where('name', $request->input('nom'))->first();
-            GroupeUser::create([
-                'groupe_id'=> $dons->id,
-                'user_id'=>$dons->user_id,
-                'enabled'=>1
-            ]);
-            GroupeMiddle::create([
-                'groupe_user'=>$dons->id,
-                'total'=>1
+        try{
+            //validate fields
+            // $attrs = $request->validate([
+            //     'body' => 'required|string'
+            // ]);
+
+            $image = $this->saveImage($request->image, 'posts');
+
+            Post::create([
+                'body' => $request->body,
+                'user_id' => $request->user_id,
+                'image' => $image
             ]);
             Toastr::success('message', trans('messages.save_successfully'));
             return back();
-        } catch (\Exception $e) {
+        }catch(\Exception $e){
             Toastr::error('message', trans('messages.unable_to_save'));
             return back();
         }
