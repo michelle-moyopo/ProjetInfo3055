@@ -9,7 +9,7 @@ class BloodPocket extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['serial_number', 'duree_vie','blood_group_id','blood_bank_id'];
+    protected $fillable = ['serial_number', 'duree_vie','blood_group_id','blood_bank_id','enabled'];
 
     public function bloodbank()
     {

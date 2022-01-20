@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('backend/assets/bundles/izitoast/css/iziToast.min.css')}}">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ ASSET('backend/assets/bundles/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/select2/dist/css/select2.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('toastr.css') }}">
     <link rel='shortcut icon' type='image/x-icon' href='{{ asset('backend/assets/img/favicon.ico') }}' />
@@ -291,6 +291,13 @@
                             <li><a class="nav-link" href="{{ route('responsable.inventaire.index') }}">{{ __('messages.gerer_stock') }}</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="package"></i><span>{{ __('messages.messagerie') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.messagerie.index') }}">{{ __('messages.gerer_messagerie') }}</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @elseif(Auth::user()->role_id == 4)
                     <ul class="sidebar-menu">
@@ -389,8 +396,9 @@
 <script src="{{ asset('backend/assets/bundles/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('backend/assets/bundles/jquery-pwstrength/jquery.pwstrength.min.js') }}"></script>
 <script src="{{ asset('backend/assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
-
-<!-- Template JS File -->
+<script src="{{ asset('backend/assets//bundles/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('backend/assets//js/page/ckeditor.js') }}"></script>
+ 
 {!! Toastr::message() !!}
 <script>
     $('table').dataTable({

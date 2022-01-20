@@ -13,7 +13,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('responsable.dashboard.index') }}">{{ __('messages.dashboard') }}</a></li>
                                     <li class="breadcrumb-item"><a href="{{ route('responsable.inventaire.index') }}">{{ __('messages.inventaire') }}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ __('messages.add_blood') }}</li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ __('messages.edit_blood') }}</li>
                                 </ol>
                             </nav>
                         </div>
@@ -29,16 +29,17 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('responsable.inventaire.store') }}" method="POST">
+                            <form action="{{ route('responsable.inventaire.update',$blood->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label>{{ __('messages.serial_number') }}</label>
-                                    <input type="text" name="serial_number" class="form-control" required>
+                                <input type="text" name="serial_number" value="{{$blood->serial_number}}" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>{{ __('messages.date_vie') }}</label>
-                                    <input type="text" name="duree_vie" class="form-control" required>
+                                    <input type="text" name="duree_vie" value="{{$blood->duree_vie}}"  class="form-control" required>
                                     
                                 </div>
 

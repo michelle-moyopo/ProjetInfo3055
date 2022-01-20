@@ -34,27 +34,47 @@
                                     <thead>
                                     <tr>
 
-                                        <th>Groupe</th>
-                                        <th>Nbre poche</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>{{ __('messages.blood_group') }}</th>
+                                        <th>{{ __('messages.serial_number') }}</th>
+                                        <th>{{ __('messages.date_vie') }}</th>
+                                        <th>{{ __('messages.status') }}</th>
+                                        <th>{{ __('messages.action') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                            @foreach ($banks as $bank)
+                                            @foreach ($groupe as $item)
+                                                
+                                          @if($bank->blood_group_id == $item->id)
                                     <tr>
-                                        <td><a href="">A</a></td>
-                                        <td>768</td>
-                                        <td>2022-02-12
+                                      
+                                            
+                                       
+                                        <td><a href="">{{$item->name}}</a></td>
+                                        <td>{{$bank->serial_number}}</td>
+                                        <td>{{$bank->duree_vie}}
                                         <td>
                                             <span class="badge badge-success">{{ __('messages.valid') }}</span>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-info">
+                                            <a href="{{ route('responsable.inventaire.edit', $bank->id)}}" class="btn btn-info">
                                                 <i data-feather="edit-2"></i>
                                             </a>
+
+                                            <a class="btn btn-outline-danger" href="{{ route('responsable.inventaire.destroy', $bank->id) }}" onclick="event.preventDefault();
+                                            document.getElementById('delete-form').submit();" title=" {{ __('messages.delete') }}">
+                                           <i class="fas fa-trash-alt"></i>
+                                       </a>
+                                       <form id="delete-form" action="{{ route('responsable.inventaire.destroy', $bank->id) }}" method="POST" class="d-none">
+                                           @csrf
+                                           @method('DELETE')
+                                       </form>
+                                       {{-- <a href="{{ route('responsable.inventaire.destroy', $bank->id) }}" class="btn btn-info">
+                                        <i data-feather="edit-2"></i> --}}
+                                    </a>
                                         </td>
-                                    </tr>
+                                     
+                                    </tr>@endif @endforeach   @endforeach
                                     </tbody>
                                 </table>
                             </div>

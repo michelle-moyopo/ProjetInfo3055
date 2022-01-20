@@ -9,7 +9,7 @@ class Mouvement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['blood_bank_id', 'blood_pocket_id', 'type_mouvement', 'date_mouvement'];
+    protected $fillable = ['blood_bank_id', 'blood_pocket_id', 'type_mouvement'];
 
     public function bloodbank()
     {

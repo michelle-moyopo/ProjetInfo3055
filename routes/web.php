@@ -60,6 +60,7 @@ Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' =
     Route::resource('activite', 'ActiviteController');
     Route::resource('account', 'AccountController');
     Route::resource('inventaire', 'InventaireController');
+    Route::resource('messagerie', 'MessagerieController');
 
     Route::get('activite-deroule', 'ActiviteController@activite_deroule')->name('activite_deroule');
 });
@@ -137,4 +138,17 @@ Route::get('/gestionnaire/validerAssociation', [App\Http\Controllers\gestionnair
 //formulaire de demande ou de dont de sang
 route:: get('/demandeDontSang', function() {
     return view('demandeDontSang');
+});
+
+//Route::get('/email', [App\Http\Controllers\TestController::class, 'create']);
+
+Route::get('/email', [App\Http\Controllers\TestController::class, 'sendmail']);
+
+
+Route::get('/test-contact', function () {
+    return new App\Mail\TestMail([
+      'nom' => 'Durand',
+      'email' => 'durand@chezlui.com',
+      'message' => 'Je voulais vous dire que votre site est magnifique !'
+      ]);
 });
