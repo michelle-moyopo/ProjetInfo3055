@@ -22,7 +22,7 @@
                                     <th>Region</th>
                                     <th>Nombre de banques de sang</th>
                                      <th>Nombre de poches de sang</th>
-                                    <th>Action</th>
+                                
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -32,8 +32,7 @@
                                     <td>56</td>
                                      <td>6450</td>
                                 
-                                    <td><a href=""  class="btn btn-sm btn-success">Details</a></td>
-                                </tr>
+                                    </tr>
                                
                                 </tbody>
                             </table>
