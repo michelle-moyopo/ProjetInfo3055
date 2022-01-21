@@ -103,6 +103,8 @@ $regions=array();
     public function show($id)
     {
         //
+        $nameRespo='non defini';
+        $nameGest= 'non defini';
         $Ap= BloodPocket::where('blood_bank_id',$id)->where('blood_group_id',1)->get();
         $nbAp=count($Ap);
         $Am= BloodPocket::where('blood_bank_id',$id)->where('blood_group_id',2)->get();
