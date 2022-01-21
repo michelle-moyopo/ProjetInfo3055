@@ -52,7 +52,7 @@ class NotifController extends Controller
 
                 $mail_data = [
                     
-                    'title'=>'Communique directeur',
+                    'title'=>$request->titre,
                     'body'=>$request->contenu
                 ];
 foreach ($user as $key ) {

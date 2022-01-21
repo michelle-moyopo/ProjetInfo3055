@@ -66,7 +66,7 @@ class CompteController extends Controller
         //
         
         $user=User::where('email',$request->mail)->get();
-
+        $bb=BloodBank::where('id',$request->fosa)->first();
         if (count($user)==0) {
             # code...
             $req=User::create(['email'=>$request->mail,'role_id'=>2,'password'=>bcrypt($request->password)]);
@@ -87,7 +87,7 @@ class CompteController extends Controller
                 $mail_data = [
                     
                     'title'=>'Nouveau compte',
-                    'body'=>$request->mail. "" .$request->password
+                    'body'=>"Vous avez été designé en tant que responsable de la banque de sang ".$bb['fosas_name']." Veuillez vous connecter via l'adresse mail ".$request->mail. " et le mot de passe " .$request->password." afin de mettre a jour votre compte"
                 ];
 
     Mail::to($request->mail)->send(new AllRespoMail($mail_data));
