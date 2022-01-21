@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class AllRespoMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
+    public  $mail_data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct( $mail_data)
     {
         //
-        $this->user = $user;
+        $this->mail_data =  $mail_data;
     }
 
     /**
