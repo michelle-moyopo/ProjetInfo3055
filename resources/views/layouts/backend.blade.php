@@ -145,8 +145,7 @@
                                 data-feather="briefcase"></i><span>Banque de sang</span></a>
                             <ul class="dropdown-menu">
                             <li><a class="nav-link" href="{{ route('directeur.BloodBank.index') }}">Voir les banques de sang</a></li>
-                              <li><a class="nav-link" href="{{ route('directeur.Inventaire.index') }}">Inventaires</a></li>
-                            </ul>
+                          </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Comptes</span></a>
