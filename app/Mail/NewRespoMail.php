@@ -12,16 +12,16 @@ class NewRespoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $userss;
+    public  $mail_data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($userss)
+    public function __construct( $mail_data)
     {
-        $this-> userss = $userss;
+        $this-> mail_data =  $mail_data;
     }
 
     /**

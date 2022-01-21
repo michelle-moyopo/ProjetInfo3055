@@ -44,12 +44,10 @@
                        class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
                         <span class="badge headerBadge1">
                 6 </span> </a>
-
                 <li class="dropdown dropdown-list-toggle">
                     <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
                         <i data-feather="bell" class="bell"></i>
                     </a>
-
                 </li>
                 <li class="dropdown">
                     <a href="/" data-toggle="dropdown"
@@ -147,8 +145,7 @@
                                 data-feather="briefcase"></i><span>Banque de sang</span></a>
                             <ul class="dropdown-menu">
                             <li><a class="nav-link" href="{{ route('directeur.BloodBank.index') }}">Voir les banques de sang</a></li>
-                              <li><a class="nav-link" href="{{ route('directeur.Inventaire.index') }}">Inventaires</a></li>
-                            </ul>
+                          </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Comptes</span></a>

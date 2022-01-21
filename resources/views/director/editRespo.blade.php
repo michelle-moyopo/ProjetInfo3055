@@ -3,7 +3,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4> Nouveau responsable</h4>
+                    <h4> Edit responsable</h4>
                   </div>
                   <form method="post" action="{{ route('directeur.Compte.update', $u->id) }}">
                      @csrf

@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fast Blood | connexion</title>
+    <title> | connexion</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
 </head>
 <body>
 <section style="background-image: url({{ asset('img/bg-img/blood.jpg') }}); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; height: 100vh;">
     <div class="col-lg-4 bg-white" style="height: 100vh; box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);">
-        <div class="mx-auto text-center pt-4" style="height: 15%;"><a href="/"><img src="{{ asset('img/logo.png') }}" style="height: 100px; width: 200px;" alt="" title="retour à l'acceuil | Fast blood"></a></div>
+        <div class="mx-auto text-center pt-4" style="height: 15%;"><a href="/"><img src="{{ asset('img/logo.png') }}" style="height: 100px; width: 200px;" alt="" title="retour à l'acceuil | "></a></div>
         <div class="mx-auto text-center mt-5">
             <h1 class="text-dark" style="font-weight: bold;">Se connecter</h1>
         </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="d-flex border border-1 border-primary w-75 rounded-2 mt-3" style="margin-left: 40px; height: 50px; border-radius: 2px;">
             <div class=" border pt-1 text-center" style="width: 15%;">
-                <img src="{{ asset('img/core-img/facebook.png') }}" style="height: 35px; width: 35px;" alt="" title="retour à l'acceuil | Fast blood">
+                <img src="{{ asset('img/core-img/facebook.png') }}" style="height: 35px; width: 35px;" alt="" title="retour à l'acceuil | ">
             </div>
             <div class=" border border-primary text-center pt-2 bg-primary"style="width: 85%;">
                 <span class="text-center text-white"><h5> S'identifier avec Facebook</h5></span>
@@ -50,7 +50,7 @@
 
         <div class="d-flex border border-1 border-danger w-75 rounded-2 mt-2" style="margin-left: 40px; height: 50px; border-radius: 2px;">
             <div class=" border pt-1 text-center" style="width: 15%;">
-                <img src="{{ asset('img/core-img/google.png') }}" style="height: 35px; width: 35px;" alt="" title="retour à l'acceuil | Fast blood">
+                <img src="{{ asset('img/core-img/google.png') }}" style="height: 35px; width: 35px;" alt="" title="retour à l'acceuil | ">
             </div>
             <div class=" border border-danger text-center pt-2 bg-danger"style="width: 85%;">
                 <span class="text-center text-white"><h5> S'identifier avec Google</h5></span>

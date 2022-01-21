@@ -13,13 +13,11 @@
     <link rel="stylesheet" href="{{asset('social/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('social/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('social/css/responsive.css')}}">
+
     <link rel="stylesheet" href="{{ asset('toastr.css') }}">
-    <link rel="stylesheet" href="{{asset('backend/assets/bundles/izitoast/css/iziToast.min.css')}}">
-    @yield('styles')
 </head>
 <body>
 <div class="se-pre-con"></div>
-<div class="theme-layout">
 
 	<div class="responsive-header">
 		<div class="mh-head first Sticky">

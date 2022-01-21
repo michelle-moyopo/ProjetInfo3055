@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {!! SEOMeta::generate() !!}
-    <title>Fast Blood | inscription</title>
+    <title> | inscription</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
 </head>
@@ -13,7 +13,7 @@
 <section style="background-image: url({{ asset('img/bg-img/g3.jpg') }}); background-repeat: no-repeat; background-attachment: fixed; background-size: contain; height: 100vh; background-position-x: 50vw;">
 
     <div class="col-lg-6 bg-white" style="height: 100vh; box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);">
-        <div class="mx-auto text-center pt-4" style="height: 15%;"><a href="/"><img src="{{ asset('img/core-img/logo.png') }}" style="height: 100px; width: 200px;" alt="" title="retour à l'acceuil | Fast blood"></a></div>
+        <div class="mx-auto text-center pt-4" style="height: 15%;"><a href="/"><img src="{{ asset('img/core-img/logo.png') }}" style="height: 100px; width: 200px;" alt="" title="retour à l'acceuil | "></a></div>
         <div class="mx-auto text-center mt-5">
             <h1 class="text-dark" style="font-weight: bold;">S'inscrire</h1>
         </div>
