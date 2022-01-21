@@ -11,14 +11,14 @@
                                     <div class="card-content">
                                         <h5 class="font-15">Total {{ __('messages.entree') }}</h5>
                                     <h2 class="mb-3 font-18">{{$entree}}</h2>
-                                        <p class="mb-0">
+                                        {{-- <p class="mb-0">
                                             <a href="#" class="btn btn-primary">{{ __('messages.view_stats') }}</a>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                                     <div class="banner-img">
-                                        <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt="">
+                                        {{-- <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt=""> --}}
                                     </div>
                                 </div>
                             </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-statistic-4">
@@ -36,14 +36,14 @@
                                     <div class="card-content">
                                         <h5 class="font-15">Total {{ __('messages.sortie') }}</h5>
                                     <h2 class="mb-3 font-18">{{$sortie}}</h2>
-                                        <p class="mb-0">
+                                        {{-- <p class="mb-0">
                                             <a href="#" class="btn btn-primary">{{ __('messages.view_stats') }}</a>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                                     <div class="banner-img">
-                                        <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt="">
+                                        {{-- <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt=""> --}}
                                     </div>
                                 </div>
                             </div>
@@ -60,14 +60,14 @@
                                     <div class="card-content">
                                         <h5 class="font-15">Total {{ __('messages.reste') }}</h5>
                                     <h2 class="mb-3 font-18">{{$reste}}</h2>
-                                        <p class="mb-0">
+                                        {{-- <p class="mb-0">
                                             <a href="#" class="btn btn-primary">{{ __('messages.view_stats') }}</a>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                                     <div class="banner-img">
-                                        <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt="">
+                                        {{-- <img src="{{ asset('backend/assets/img/banner/3.png') }}" alt=""> --}}
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@
                     </div>
                 </div>
             </div>
-           
-            @foreach ($bankgroup as $item)
+
+            {{-- @foreach ($bankgroup as $item)
                      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <h3>{{ __('messages.autrebanque') }}<h3>
                 <div class="card">
@@ -94,17 +94,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                                     <div class="banner-img">
-                                        <img src="{{ asset('backend/assets/img/banner/4.png') }}" alt="">
-                                    </div>
+                                        <img src="{{ asset('backend/assets/img/banner/4.png') }}" alt=""> --}}
+                                    {{-- </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            @endforeach
-{{--        
+
+            @endforeach --}}
+{{--
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-statistic-4">

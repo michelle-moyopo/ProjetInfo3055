@@ -27,7 +27,7 @@ class CreateBloodBanksTable extends Migration
             $table->foreign('district_id')->references('id')->on('districts')->cascadeOnDelete();
             $table->foreign('responsable_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('gestionnaire_id')->references('id')->on('users')->cascadeOnDelete();
-          
+
         });
     }
 

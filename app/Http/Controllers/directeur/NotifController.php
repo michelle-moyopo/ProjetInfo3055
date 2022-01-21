@@ -28,10 +28,10 @@ class NotifController extends Controller
      */
     public function create()
     {
-       
+
     }
 
-   
+
 
 
     /**
@@ -48,18 +48,23 @@ class NotifController extends Controller
 
             if($this->isOnline()){
                    $user=User::where('role_id',3)->get();
-       
+
 
                 $mail_data = [
+<<<<<<< Updated upstream
                     
                     'title'=>$request->titre,
+=======
+
+                    'title'=>'Communique directeur',
+>>>>>>> Stashed changes
                     'body'=>$request->contenu
                 ];
-foreach ($user as $key ) {
-    $mail=$key['email'];
-    Mail::to($mail)->send(new AllRespoMail($mail_data));
- 
-}
+                foreach ($user as $key ) {
+                    $mail=$key['email'];
+                    Mail::to($mail)->send(new AllRespoMail($mail_data));
+
+                }
                 Mail::to("teumoubande@gmail.com")->send(new AllRespoMail($mail_data));
                 Toastr::success('messages', trans('messages.save_successfully'));
                 return back();

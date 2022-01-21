@@ -34,7 +34,7 @@
             </div>
         </div><!-- add post new box -->
 
-
+        @foreach($posts as $post)
         <div class="loadMore">
         <div class="central-meta item">
             <div class="user-post">
@@ -43,11 +43,11 @@
                         <img src="{{asset('social/images/resources/friend-avatar10.jpg')}}" alt="">
                     </figure>
                     <div class="friend-name">
-                        <ins><a href="time-line.html" title="">Janice Griffith</a></ins>
-                        <span>published: june,2 2018 19:PM</span>
+                    <ins><a href="#" title="">{{$post->user->name}}</a></ins>
+                        <span>published: {{$post->created_at}}</span>
                     </div>
                     <div class="post-meta">
-                        <img src="{{asset('social/images/resources/user-post.jpg')}}" alt="">
+                    <img src="{{$post->image}}" alt="{{$post->image}}">
                         <div class="we-video-info">
                             <ul>
                                 <li>
@@ -112,14 +112,14 @@
                         <div class="description">
 
                             <p>
-                                World's most beautiful car in Curabitur <a href="#" title="">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website
+                                <a href="#" title="">#{{$post->body}} </a>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="coment-area">
                     <ul class="we-comet">
-                        <li>
+                        {{-- <li>
                             <div class="comet-avatar">
                                 <img src="{{asset('social/images/resources/comet-1.jpg')}}" alt="">
                             </div>
@@ -132,7 +132,7 @@
                                 <p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
                             </div>
 
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="#" title="" class="showmore underline">more comments</a>
@@ -169,6 +169,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
         </div>
     </div><!-- centerl meta -->

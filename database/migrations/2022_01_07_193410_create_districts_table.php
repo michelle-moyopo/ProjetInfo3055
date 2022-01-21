@@ -17,8 +17,9 @@ class CreateDistrictsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('region_id');
             $table->string('name')->unique();
+            $table->string('deleted_at')->default(null);
+            $table->timestamps();
             $table->foreign('region_id')->references('id')->on('regions')->cascadeOnDelete();
-             $table->timestamps();
         });
     }
 

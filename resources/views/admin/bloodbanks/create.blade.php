@@ -32,20 +32,36 @@
                             <form action="{{ route('admin.bloodbank.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label>{{ __('messages.users') }}</label>
-                                    <select class="form-control select2" name="user_id" required>
+                                        <label>District</label>
+                                        <select class="form-control select2" name="district" required>
+                                            @foreach($district as $dist)
+                                                <option value="{{ $dist->id }}">{{ $dist->name }} ({{ $dist->region->name }})</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                <div class="form-group">
+                                    <label>Responsable</label>
+                                    <select class="form-control select2" name="user_id_responsable" required>
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->role->name }})</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>{{ __('messages.name') }}</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                        <label>Gestionnaire</label>
+                                        <select class="form-control select2" name="user_id_Gestionnaire" required>
+                                            @foreach($usersgest as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->role->name }})</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                <div class="form-group">
+                                    <label>Nom De La Formation Sanitaire</label>
+                                    <input type="text" name="fosa" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>{{ __('messages.address') }}</label>
-                                    <input type="text" name="address" class="form-control" required>
+                                    <label>Contact</label>
+                                    <input type="text" name="contact" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-outline-success">{{ __('messages.save') }}</button>

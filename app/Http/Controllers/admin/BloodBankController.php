@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\BloodBank;
 use App\Models\User;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\District;
+use App\Models\BloodBank;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BloodBankController extends Controller
 {
@@ -29,9 +30,19 @@ class BloodBankController extends Controller
     public function create()
     {
         $users = User::where('role_id', '!=', 1)
+        ->where('role_id', '!=', 2)
+        ->where('role_id', '!=', 4)
+        ->where('role_id', '!=', 5)
             ->where('enabled', 1)
             ->get();
-        return view('admin.bloodbanks.create', compact('users'));
+
+        $usersgest =User::where('role_id','!=',2)
+        ->where('role_id','!=',1)
+        ->where('role_id','!=',3)
+        ->where('role_id','!=',5)
+        ->where('enabled', 1)->get();
+        $district=District::all();
+        return view('admin.bloodbanks.create', compact('users','usersgest','district'));
     }
 
     /**

@@ -47,7 +47,7 @@ class LoginController extends Controller
         } elseif ($user->role_id == 3 && $user->enabled == 1) {
             $this->redirectTo = route('responsable.dashboard.index');
         } elseif($user->role_id == 4 && $user->enabled == 1) {
-            $this->redirectTo = route('gestionnaire');
+            $this->redirectTo = route('gestionnaire.dashboard.index');
         } elseif($user->role_id == 5 && $user->enabled == 1) {
             $this->redirectTo = route('user.dashboard.index');
         }

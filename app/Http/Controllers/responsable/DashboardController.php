@@ -17,26 +17,22 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $userId = Auth::id();  
+    { $total=0; $all=0; $bankgroup=0;$entree=0;$sortie=0;$reste=0;
+        $userId = Auth::id();
         $user = BloodBank::where("enabled","1")->where("responsable_id",$userId)->first();
-        $banks = BloodPocket::where("blood_bank_id",$user['id'])->get(); 
+        $banks = BloodPocket::where("blood_bank_id",$user['id'])->get();
            $total=count($banks);
            $entre = Mouvement::where("blood_bank_id",$user['id'])->get();
            $entree=count($entre);
            $sorti = Mouvement::where("type_mouvement","0")->where("blood_bank_id",$user['id'])->get();
            $sortie=count($sorti);
-           $reste = $entree - $sortie;
-         $bankgroup =BloodBank::where("enabled","1")->where("id",'!=',$user['id'])->where("district_id",$user['district_id'])->get();
-         foreach ($bankgroup as $key) {
-            $banks = BloodPocket::where("blood_bank_id",$key['id'])->get(); 
-           $all=count($banks);
-           return view('responsable.dashboard',compact('total','all','bankgroup','entree','sortie','reste'));
-            }
-            //return view('responsable.dashboard',compact('total'));
-                  
+
+           return view('responsable.dashboard',compact('entree','sortie','reste'));
+
+            // return view('responsable.dashboard');
+
 }
-       
+
 
     /**
      * Show the form for creating a new resource.
