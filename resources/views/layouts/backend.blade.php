@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     {!! SEOMeta::generate() !!}
-    <title> @yield('title') |  </title>
+    <title> @yield('title') | FastBlood </title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css') }}">
     <!-- Template CSS -->
@@ -16,14 +16,10 @@
     <link rel="stylesheet" href="{{asset('backend/assets/bundles/izitoast/css/iziToast.min.css')}}">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ ASSET('backend/assets/bundles/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{asset('bundles/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{asset('bundles/codemirror/lib/codemirror.css') }}">
-  <link rel="stylesheet" href="{{asset('bundles/codemirror/theme/duotone-dark.css') }}">
-  <link rel="stylesheet" href="{{asset('bundles/jquery-selectric/selectric.css') }}">
-  
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/select2/dist/css/select2.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('toastr.css') }}">
-    <link rel='shortcut icon' type='image/x-icon' href="{{ asset('backend/assets/img/favicon.ico') }}" />
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('backend/assets/img/favicon.ico') }}' />
     @yield('styles')
 </head>
 
@@ -48,112 +44,10 @@
                        class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
                         <span class="badge headerBadge1">
                 6 </span> </a>
-                    {{-- <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-                        <div class="dropdown-header">
-                            Messages
-                            <div class="float-right">
-                                <a href="#">Mark All As Read</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-list-content dropdown-list-message">
-                            <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                      Deo</span>
-                    <span class="time messege-text">Please check your mail !!</span>
-                    <span class="time">2 Min Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Request for leave
-                      application</span>
-                    <span class="time">5 Min Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
-                      Ryan</span> <span class="time messege-text">Your payment invoice is
-                      generated.</span> <span class="time">12 Min Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
-                      Smith</span> <span class="time messege-text">hii John, I have upload
-                      doc
-                      related to task.</span> <span class="time">30
-                      Min Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
-                      Joshi</span> <span class="time messege-text">Please do as specify.
-                      Let me
-                      know if you have any query.</span> <span class="time">1
-                      Days Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Client Requirements</span>
-                    <span class="time">2 Days Ago</span>
-                  </span>
-                            </a>
-                        </div>
-                        <div class="dropdown-footer text-center">
-                            <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </li> --}}
                 <li class="dropdown dropdown-list-toggle">
                     <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
                         <i data-feather="bell" class="bell"></i>
                     </a>
-                    {{-- <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-                        <div class="dropdown-header">
-                            Notifications
-                            <div class="float-right">
-                                <a href="#">Mark All As Read</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-list-content dropdown-list-icons">
-                            <a href="#" class="dropdown-item dropdown-item-unread"> <span
-                                    class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                  </span> <span class="dropdown-item-desc"> Template update is
-                    available now! <span class="time">2 Min
-                      Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                      Sugiharto</b> are now friends <span class="time">10 Hours
-                      Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                                        class="fas
-												fa-check"></i>
-                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                      Hours
-                      Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                                        class="fas fa-exclamation-triangle"></i>
-                  </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                    clean it! <span class="time">17 Hours Ago</span>
-                  </span>
-                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
-                    template! <span class="time">Yesterday</span>
-                  </span>
-                            </a>
-                        </div>
-                        <div class="dropdown-footer text-center">
-                            <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                        </div>
-                    </div> --}}
                 </li>
                 <li class="dropdown">
                     <a href="/" data-toggle="dropdown"
@@ -185,7 +79,7 @@
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
                     <a href="/"> <img alt="image" src="{{ asset('img/logo.png') }}" class="header-logo" /> <span
-                            class="logo-name"></span>
+                            class="logo-name">FastBlood</span>
                     </a>
                 </div>
                 @if(Auth::user()->role_id == 1)
@@ -227,46 +121,94 @@
                             <a href="{{ route('admin.slider.index') }}" class="nav-link">
                                 <i data-feather="server"></i><span>{{ __('messages.slider') }}</span></a>
                         </li>
+                        <li class="dropdown {{ Request::is('admin/faq/faq') ? 'active' : '' }}">
+                            <a href="{{ route('admin.faq.index') }}" class="nav-link">
+                                <i data-feather="server"></i><span>FAQ</span></a>
+                        </li>
+                        <li class="dropdown {{ Request::is('admin/faq/cathegories') ? 'active' : '' }}">
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">
+                                <i data-feather="server"></i><span>Cathegories FAQ</span></a>
+                        </li>
+                        <li class="dropdown {{ Request::is('admin/faq/faquestions') ? 'active' : '' }}">
+                            <a href="{{ route('admin.faquestion.index') }}" class="nav-link">
+                                <i data-feather="server"></i><span>Questions FAQ</span></a>
+                        </li>
                     </ul>
                 @elseif(Auth::user()->role_id == 2 || session()->get('role')=="DirGes")
                 <ul class="sidebar-menu">
                     <li class="menu-header">{{ __('messages.main') }}</li>
                     <li class="dropdown {{ Request::is('directeur/dashboard') ? 'active' : '' }}">
-                        <a href="{{ route('directeur.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
+                        <a href="{{ route('user.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                            data-feather="briefcase"></i><span>Banque de sang</span></a>
-                        <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{{ route('directeur.BloodBank.index') }}">Voir les banques de sang</a></li>
-                          <li><a class="nav-link" href="{{ route('directeur.Inventaire.index') }}">Inventaires</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Comptes</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="{{ route('directeur.Responsable.index') }}">Comptes responsable</a></li>
-                            <li><a class="nav-link" href="{{ route('directeur.Notification.index') }}">Notifications</a></li>
-                        </ul>
-                    </li>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="briefcase"></i><span>Banque de sang</span></a>
+                            <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('directeur.BloodBank.index') }}">Voir les banques de sang</a></li>
+                              <li><a class="nav-link" href="{{ route('directeur.Inventaire.index') }}">Inventaires</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Comptes</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('directeur.Compte.index') }}">Comptes responsable</a></li>
+                                <li><a class="nav-link" href="{{ route('directeur.Notification.index') }}">Notifications</a></li>
+                            </ul>
+                        </li>
                     <li class="dropdown">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Reponses Communautaire</span></a>
                         <ul class="dropdown-menu">
-                          <li><a class="nav-link" href="">Certifier Une Association</a></li>
-                          <li><a class="nav-link" href="#">Associations Certifie</a></li>
-                          <li><a class="nav-link" href="#">Associations Non Certifie</a></li>
-                          <li><a class="nav-link" href="#">Annonce Collective</a></li>
-                          <li><a class="nav-link" href="#">Publication Generale</a></li>
+                        <li><a class="nav-link" href="{{route('directeur.reponseC.index')}}">Certifier Une Association</a></li>
+                          <li><a class="nav-link" href="{{route('directeur.annonce_collective.index')}}">Annonce Collective</a></li>
+                          <li><a class="nav-link" href="{{route('directeur.publication_generale.index')}}">Publication Generale</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Activites</span></a>
+                        <ul class="dropdown-menu">
+                          <li><a class="nav-link" href="">les Activites</a></li>
+                          <li><a class="nav-link" href="#">Mes Activites</a></li>
+                          <li><a class="nav-link" href="#">Creer une Activites</a></li>
                         </ul>
                     </li>
                 </ul>
                 @elseif(Auth::user()->role_id == 3)
-                    <ul class="sidebar-menu">
-                        <li class="menu-header">{{ __('messages.main') }}</li>
-                        <li class="dropdown {{ Request::is('responsable/dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('responsable.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
-                        </li>
-                    </ul>
+                <ul class="sidebar-menu">
+                    <li class="menu-header">{{ __('messages.main') }}</li>
+                    <li class="dropdown {{ Request::is('responsable/dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('responsable.dashboard.index') }}" class="nav-link"><i data-feather="monitor"></i><span>{{ __('messages.dashboard') }}</span></a>
+                    </li>
+                    {{-- <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="layers"></i><span>{{ __('messages.reponse_communautaire') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.association.index') }}">{{ __('messages.valid_association') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('responsable.activite.index') }}">{{ __('messages.organise_activity') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('responsable.activite_deroule') }}">{{ __('messages.activite_deroule') }}</a></li>
+                        </ul>
+                    </li> --}}
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="users"></i><span>{{ __('messages.comptes') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.account.index') }}">{{ __('messages.create_account') }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="package"></i><span>{{ __('messages.inventaires') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.inventaire.index') }}">{{ __('messages.gerer_stock') }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="package"></i><span>{{ __('messages.messagerie') }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="{{ route('responsable.messagerie.index') }}">{{ __('messages.gerer_messagerie') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 @elseif(Auth::user()->role_id == 4)
                     <ul class="sidebar-menu">
                         <li class="menu-header">{{ __('messages.main') }}</li>
@@ -331,7 +273,7 @@
 
         <footer class="main-footer">
             <div class="footer-left">
-                <a href="/"></a></a>
+                <a href="/">FastBlood</a></a>
             </div>
             <div class="footer-right">
                 Centre de Transfusion Sanguine
@@ -364,14 +306,9 @@
 <script src="{{ asset('backend/assets/bundles/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('backend/assets/bundles/jquery-pwstrength/jquery.pwstrength.min.js') }}"></script>
 <script src="{{ asset('backend/assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('bundles/summernote/summernote-bs4.js') }}"></script>
-  <script src="{{ asset('bundles/codemirror/lib/codemirror.js') }}"></script>
-  <script src="{{ asset('bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
-  <script src="{{ asset('bundles/ckeditor/ckeditor.js') }}"></script>
-  <!-- Page Specific JS File -->
-  <script src="{{ asset('js/page/ckeditor.js') }}"></script>
-  
-<!-- Template JS File -->
+<script src="{{ asset('backend/assets//bundles/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('backend/assets//js/page/ckeditor.js') }}"></script>
+ 
 {!! Toastr::message() !!}
 <script>
     $('table').dataTable({

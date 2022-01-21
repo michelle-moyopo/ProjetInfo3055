@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\informations\Faq;
 use App\Http\Controllers\user\AssociationController;
 use App\Http\Controllers\informations\Connaitre_plus;
-use App\Http\Controllers\informations\Qui_peut_donner;
 use App\Http\Controllers\AssociationUjoinedController;
+use App\Http\Controllers\informations\Qui_peut_donner;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,19 +42,32 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::resource('groupe', 'GroupeController');
     Route::resource('bloodbankaffiliation', 'BlooBankAffiliationController');
     Route::resource('slider', 'SliderController');
+    Route::resource('faq', 'Faq\FaqController');
+    Route::resource('categories', 'Faq\CategoriesController');
+    Route::resource('faquestion', 'Faq\FaqQuestionController');
 });
 
 Route::group(['prefix' => 'directeur', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\directeur', 'as' => 'directeur.'], function() {
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('reponseC', 'ReponseCommunautaireController');
+    Route::resource('annonce_collective', 'AnnonceCollectiveController');
+    Route::resource('publication_generale', 'PublicationGeneraleController');
     Route::resource('BloodBank', 'BloodBankController');
     Route::resource('Inventaire', 'InventaireController');
     Route::resource('Responsable', 'ResponsableController');
-    Route::resource('Notification', 'NotificationController');
-        // Route::resource('dashboard', 'HomeDirectorController');
+    Route::resource('Notification', 'NotifController');
+    Route::resource('Compte', 'CompteController');
 });
 
 Route::group(['prefix' => 'responsable', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\responsable', 'as' => 'responsable.'], function() {
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('association', 'AssociationController');
+    Route::resource('activite', 'ActiviteController');
+    Route::resource('account', 'AccountController');
+    Route::resource('inventaire', 'InventaireController');
+    Route::resource('messagerie', 'MessagerieController');
+
+    Route::get('activite-deroule', 'ActiviteController@activite_deroule')->name('activite_deroule');
 });
 
 // Route::group(['prefix' => 'gestionnaire', 'middleware' => ['auth'], 'namespace' => 'App\Http\Controllers\gestionnaire', 'as' => 'gestionnaire.'], function() {
@@ -66,6 +80,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth'], 'namespace' => 'App\
     Route::resource('demander', 'DemanderController');
     Route::resource('association', 'AssociationController');
     Route::resource('unjoind', 'AssociationUjoinedController');
+    Route::resource('posts','PostComtroller');
 
 });
 
@@ -125,3 +140,28 @@ Route::post('/gestionnaire/addPocheSang', [App\Http\Controllers\gestionnaire\Lis
 Route::get('/gestionnaire/listeAssociation', [App\Http\Controllers\gestionnaire\AssociationController::class, 'index'])->name('listeAssoiationAffi');
 Route::get('/gestionnaire/detailAssociation/{id}', [App\Http\Controllers\gestionnaire\AssociationController::class, 'show'])->name('');
 Route::get('/gestionnaire/validerAssociation', [App\Http\Controllers\gestionnaire\ValiderAssociationController::class, 'index'])->name('validerAssoiationAffi');
+
+//formulaire de demande ou de dont de sang
+route:: get('/demandeDontSang', function() {
+    return view('demandeDontSang');
+});
+
+
+
+Route::get('/email', [App\Http\Controllers\TestController::class, 'sendmail']);
+
+// Post
+Route::get('/posts', [PostController::class, 'index']); // all posts
+Route::post('/posts', [PostController::class, 'store'])->name("create_posts"); // create post
+Route::get('/posts/{id}', [PostController::class, 'show']); // get single post
+Route::put('/posts/{id}', [PostController::class, 'update']); // update post
+Route::delete('/posts/{id}', [PostController::class, 'destroy']); // delete post
+
+// Comment
+Route::get('/posts/{id}/comments', [CommentController::class, 'index']); // all comments of a post
+Route::post('/posts/{id}/comments', [CommentController::class, 'store']); // create comment on a post
+Route::put('/comments/{id}', [CommentController::class, 'update']); // update a comment
+Route::delete('/comments/{id}', [CommentController::class, 'destroy']); // delete a comment
+
+// Like
+Route::post('/posts/{id}/likes', [LikeController::class, 'likeOrUnlike']); // like or dislike back a post

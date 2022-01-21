@@ -9,16 +9,16 @@ class BloodBank extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'user_id', 'enabled'];
+    protected $fillable = ['fosas_name', 'contact','district_id','responsable_id','gestionnaire_id', 'enabled'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function bankpockets()
+    public function districts()
     {
-        return $this->hasMany(BankPocket::class);
+        return $this->belongsTo(District::class);
     }
 
     public function mouvements()
@@ -26,8 +26,4 @@ class BloodBank extends Model
         return $this->hasMany(Mouvement::class);
     }
 
-    public function bloodbankmanager()
-    {
-        return $this->hasMany(BloodBankManager::class);
-    }
 }

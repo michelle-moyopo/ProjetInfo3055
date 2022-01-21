@@ -10,12 +10,12 @@ class BloodBankAffiliation extends Model
     use HasFactory;
     protected $fillable = ['user_id', 'bank_id', 'enabled'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function bloodbank()
+    public function blood_banks()
     {
         return $this->belongsTo(BloodBank::class);
     }

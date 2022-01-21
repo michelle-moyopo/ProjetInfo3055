@@ -12,11 +12,6 @@ class Groupe extends Model
 
     protected $fillable = ['name', 'description','user_id', 'enabled'];
 
-    public function groupe_users()
-    {
-        return $this->hasMany(GroupeUser::class);
-    }
-
     public function user()
     {
         return $this->belongsTo()(User::class, 'user_id');

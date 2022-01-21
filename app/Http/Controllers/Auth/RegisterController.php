@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = "loginpage";
+      protected $redirectTo = "/";
 
     /**
      * Create a new controller instance.
@@ -56,9 +56,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'string', 'max:15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'telephone'=> ['required'],
-            'role_id'=>['required', 'int']
+            'password' => ['required', 'string', 'min:8']
+
         ]);
     }
 
@@ -77,7 +76,7 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
             //'role_id' => 1,
             'password' => Hash::make($data['password']),
-            'role_id' => $data['role_id']
+            'role_id' => 5
         ]);
     }
 

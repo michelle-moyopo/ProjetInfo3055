@@ -10,7 +10,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title> | Accueil</title>
+    <title>FastBlood | Accueil</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('img/logo.png') }}">
@@ -291,7 +291,7 @@
                     <div class="bottom-footer-content">
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
-                            <p><a href="/"></a>
+                            <p><a href="/">FastBlood</a>
                             </p>              </div>
                     </div>
                 </div>
