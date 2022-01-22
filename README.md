@@ -39,7 +39,9 @@
 2. Install all the necessary packages by: `$ composer install` or `$ composer update `
 3. Create the .env file by typing the command:`$ cp .env.example .env`
 4. Generate Application key with: `$ php artisan key:generate`
-5. Run the migration (create the database): `$ php artisan migrate`
-6. Insert dumy data: `$ php artisan db:seed`
-7. Run the app: `$ php artisan serve` and launch your browser on the url from your local machine
-8. Enjoy !!!
+5. from the file .env copy the name of the DATABASE and install XAMPP or WAMP
+6. create database with the same name in PHPMYADMIN 
+7. Run the migration (create the database): `$ php artisan migrate`
+8. Insert dumy data: `$ php artisan db:seed`
+9. Run the app: `$ php artisan serve` and launch your browser on the url from your local machine
+10. Enjoy !!!
