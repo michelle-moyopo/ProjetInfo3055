@@ -65,10 +65,10 @@
                                             document.getElementById('delete-form').submit();" title=" {{ __('messages.delete') }}">
                                            <i class="fas fa-trash-alt"></i>
                                        </a>
-                                       <form id="delete-form" action="{{ route('responsable.inventaire.destroy', $bank->id) }}" method="POST" class="d-none">
+                                       {{-- <form id="delete-form" action="{{ route('responsable.inventaire.destroy', $bank->id) }}" method="POST" class="d-none">
                                            @csrf
                                            @method('DELETE')
-                                       </form>
+                                       </form> --}}
                                        {{-- <a href="{{ route('responsable.inventaire.destroy', $bank->id) }}" class="btn btn-info">
                                         <i data-feather="edit-2"></i> --}}
                                     </a>
